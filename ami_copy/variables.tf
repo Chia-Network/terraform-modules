@@ -11,5 +11,4 @@ variable "source_ami_id" {
 variable "source_ami_region"{
   description = "this will almost always be us-west-2"
   type        = string
-  default     = "us-west-2"
 }
