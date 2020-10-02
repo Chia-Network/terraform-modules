@@ -7,3 +7,8 @@ output "ssl_cert" {
 value       = acme_certificate.certificate.certificate_pem
 description = "the acme cert"
 }
+
+output "issuer_cert" {
+value       = acme_certificate.certificate.issuer_pem
+description = "the issuer cert"
+}
