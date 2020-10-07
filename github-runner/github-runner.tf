@@ -19,7 +19,7 @@ resource "aws_instance" "GithubRunner" {
   provisioner "remote-exec" {
     inline = [
       "/home/ubuntu/actions-runner/config.sh --url https://github.com/Chia-Network --token ${ var.runner_token } --unattended --replace",
-      "systemctl enable github-runner",
+      "sudo systemctl enable github-runner",
     ]
     connection {
       type        = "ssh"
