@@ -9,6 +9,6 @@ description = "the db password"
 }
 
 output "db_endpoint" {
-value       = aws_db_instance.chia_backup_db.endpoint
+value       = aws_db_instance.db.endpoint
 description = "the db endpoint address:port"
 }
