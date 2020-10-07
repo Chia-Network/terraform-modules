@@ -19,7 +19,8 @@ resource "aws_instance" "GithubRunner" {
   provisioner "remote-exec" {
     inline = [
       "/home/ubuntu/actions-runner/config.sh --url https://github.com/Chia-Network --token ${ var.runner_token } --unattended --replace",
-      "/home/ubuntu/actions-runner/run.sh &",
+      "sudo /home/ubuntu/actions-runner/svc.sh install",
+      "sudo /home/ubuntu/actions-runner/svc.sh start",
       #"sudo su && hostnamectl set-hostname ${ var.runner_name }-${count.index + 1}",
     ]
     connection {
