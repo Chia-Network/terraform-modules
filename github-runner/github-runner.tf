@@ -21,7 +21,7 @@ resource "aws_instance" "GithubRunner" {
       "/home/ubuntu/actions-runner/config.sh --url https://github.com/Chia-Network --token ${ var.runner_token } --unattended --replace",
       "sudo systemctl enable github-runner",
       "sudo systemctl start github-runner",
-      "hostnamectl set-hostname ${ var.runner_name }-${count.index + 1}",
+      #"sudo su && hostnamectl set-hostname ${ var.runner_name }-${count.index + 1}",
     ]
     connection {
       type        = "ssh"
