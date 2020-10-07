@@ -56,5 +56,9 @@ variable "security_groups" {
 }
 
 variable "snapshot_id" {
+  description = "snapshot id of previous db to restore"
+}
+
+variable "final_snapshot_id" {
   description = "final snapshot id when instance is destroyed"
 }

@@ -16,7 +16,8 @@ resource "aws_db_instance" "db" {
   multi_az                  = var.multi_az
   publicly_accessible       = var.publicly_accessible
   vpc_security_group_ids    = var.security_groups
-  final_snapshot_identifier = var.snapshot_id
+  final_snapshot_identifier = var.final_snapshot_id
+  snapshot_identifier       = var.snapshot_id
   #skip_final_snapshot      = var.skip_final_snapshot
   tags = {
   Name = var.db_name
