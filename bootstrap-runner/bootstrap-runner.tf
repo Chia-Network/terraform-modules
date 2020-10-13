@@ -4,7 +4,7 @@
 #
 #
 
-resource "aws_instance" "GithubRunner" {
+resource "aws_instance" "BootstrapRunner" {
   count                = var.instance_count
   instance_type        = var.instance_type
   iam_instance_profile = var.iam_instance_profile
@@ -18,7 +18,7 @@ resource "aws_instance" "GithubRunner" {
 
   provisioner "remote-exec" {
     inline = [
-      "/home/ubuntu/actions-runner/config.sh --url https://github.com/Chia-Network --token ${ var.runner_token } --labels Bootstrap --unattended --replace",
+      "/home/ubuntu/actions-runner/config.sh --url https://github.com/Chia-Network --token ${ var.runner_token } --labels Bootstrap --runnergroup BootstrapRunner --unattended --replace",
       "cd /home/ubuntu/actions-runner && sudo ./svc.sh install",
       "cd /home/ubuntu/actions-runner && sudo ./svc.sh start",
       #"sudo su && hostnamectl set-hostname ${ var.runner_name }-${count.index + 1}",
