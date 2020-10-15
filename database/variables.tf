@@ -62,3 +62,15 @@ variable "snapshot_id" {
 variable "final_snapshot_id" {
   description = "final snapshot id when instance is destroyed"
 }
+
+variable "application_tag" {
+  description = "the instance tag to use"
+  type        = string
+  default     = "testnet"
+}
+
+variable "tags" {
+  description = "Additional tags"
+  type        = map
+  default     = {}
+}

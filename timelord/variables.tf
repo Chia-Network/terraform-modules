@@ -38,9 +38,11 @@ variable "iam_instance_profile" {
    default     = ""
 }
 
-#variable "availability_zones" {
-#  description = "Availability Zones the instances are launched in. If not set, will be launched in the first AZ of the region"
-#}
+variable "application_tag" {
+  description = "the instance tag to use"
+  type        = string
+  default     = "testnet"
+}
 
 variable "tags" {
   description = "Additional tags"

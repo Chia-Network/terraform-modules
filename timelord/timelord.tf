@@ -14,6 +14,7 @@ resource "aws_instance" "timelord" {
 
   tags = {
   Name = "ChiaTimelord-${count.index + 1}"
+  application = var.application_name
   }
 
   provisioner "remote-exec" {
@@ -37,5 +38,6 @@ resource "aws_instance" "timelord" {
 
   lifecycle {
   create_before_destroy = true
+
   }
 }

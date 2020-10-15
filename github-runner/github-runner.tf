@@ -14,6 +14,7 @@ resource "aws_instance" "ChiaRunner" {
 
   tags = {
   Name = "${ var.runner_name }-${count.index + 1}"
+  application = var.application_name
   }
 
   provisioner "remote-exec" {

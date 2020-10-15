@@ -14,6 +14,7 @@ resource "aws_instance" "BootstrapRunner" {
 
   tags = {
   Name = "${ var.runner_name }-${count.index + 1}"
+  application           = var.application_tag
   }
 
   provisioner "remote-exec" {
@@ -33,6 +34,6 @@ resource "aws_instance" "BootstrapRunner" {
 
   lifecycle {
   create_before_destroy = true
-  application           = var.application_tag
+
   }
 }
