@@ -37,5 +37,6 @@ resource "aws_elb" "lb" {
 
   tags = {
     Name = var.lb_name
+    application = var.application_tag
   }
 }

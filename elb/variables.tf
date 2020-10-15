@@ -13,3 +13,15 @@ variable "availability_zones" {
 variable "ssl_certificate" {
   description = "iam-server-certificate to add to the LB"
 }
+
+variable "application_tag" {
+  description = "the instance tag to use"
+  type        = string
+  default     = "testnet"
+}
+
+variable "tags" {
+  description = "Additional tags"
+  type        = map
+  default     = {}
+}
