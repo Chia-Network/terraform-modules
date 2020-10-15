@@ -14,6 +14,7 @@ resource "aws_instance" "BackupNode" {
 
   tags = {
   Name = "ChiaBackupService-${count.index + 1}"
+  application = var.application_tag
   }
 
   lifecycle {

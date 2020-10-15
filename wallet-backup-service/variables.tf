@@ -4,18 +4,18 @@ default = "3"
 
 variable "instance_type" {
   description = "instance size/type"
-  type = string
-  default = "t3.micro"
+  type        = string
+  default     = "t3.micro"
 }
 
 variable "ami" {
   description = "instance ami id"
-  type = string
+  type        = string
 }
 
 variable "iam_instance_profile" {
   description = "IAM Instance Profile to use for Resource"
-  type = string
+  type        = string
 }
 
 variable "subnet_id" {
@@ -24,6 +24,12 @@ variable "subnet_id" {
 
 variable "security_groups" {
   description = "Security Group for resources"
+}
+
+variable "application_tag" {
+  description = "the instance tag to use"
+  type        = string
+  default     = "testnet"
 }
 
 variable "tags" {
