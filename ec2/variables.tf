@@ -37,6 +37,12 @@ variable "instance_name" {
   description = "Name of the ec2 instance to create"
 }
 
+variable "application_tag" {
+  description = "the instance tag to use"
+  type        = string
+  default     = "testnet"
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map
