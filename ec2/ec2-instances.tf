@@ -14,6 +14,6 @@ subnet_id            = var.subnet_id
 
   tags = {
   Name        = "${var.instance_name}-${count.index + 1}"
-  application = var.application_name
+  application = var.application_tag
   }
 }

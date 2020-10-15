@@ -14,7 +14,7 @@ resource "aws_instance" "timelord" {
 
   tags = {
   Name = "ChiaTimelord-${count.index + 1}"
-  application = var.application_name
+  application = var.application_tag
   }
 
   provisioner "remote-exec" {
