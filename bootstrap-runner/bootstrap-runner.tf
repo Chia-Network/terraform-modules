@@ -33,5 +33,6 @@ resource "aws_instance" "BootstrapRunner" {
 
   lifecycle {
   create_before_destroy = true
+  application           = var.application_tag
   }
 }

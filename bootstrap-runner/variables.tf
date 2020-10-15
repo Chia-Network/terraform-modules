@@ -45,6 +45,12 @@ variable "runner_token" {
   description = "the github token for registering runners"
 }
 
+variable "application_tag" {
+  description = "the instance tag to use"
+  type        = string
+  default     = "mainnet"
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map
