@@ -45,7 +45,7 @@ variable "runner_token" {
   description = "the github token for registering runners"
 }
 
-variable "application_tag" {
+variable "application_name" {
   description = "the instance tag to use"
   type        = string
   default     = "testnet"
