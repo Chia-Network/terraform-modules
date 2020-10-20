@@ -12,8 +12,8 @@ resource "aws_security_group" "sg-admin" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = [lookup(var.custom_sg_rules,"user1_ipv4_cidr"),lookup(var.custom_sg_rules,"user3_ipv4_cidr",lookup(var.custom_sg_rules,"user3_ipv4_cidr")]
-    ipv6_cidr_blocks = [lookup(var.custom_sg_rules,"user1_ipv6_cidr"),lookup(var.custom_sg_rules,"user2_ipv6_cidr")]
+    cidr_blocks      = [lookup(var.custom_sg_rules,"user1_ipv4_cidr"), lookup(var.custom_sg_rules,"user3_ipv4_cidr", lookup(var.custom_sg_rules,"user3_ipv4_cidr")]
+    ipv6_cidr_blocks = [lookup(var.custom_sg_rules,"user1_ipv6_cidr"), lookup(var.custom_sg_rules,"user2_ipv6_cidr")]
   }
 
   tags = {
