@@ -4,8 +4,8 @@
 #
 
 resource "aws_iam_policy" "policy" {
-  name        = var.policy_name
-  description = "policy for ${var.policy_name}"
+  name        = "var.policy_name
+  description = "${path.root}/policy for ${var.policy_name}"
   policy      = file(var.policy_file)
 
   lifecycle {
@@ -19,8 +19,8 @@ resource "aws_iam_policy" "policy" {
 #
 
 resource "aws_iam_role" "role" {
-  name                    = var.role_assume_policy_name
-  description             = "policy for ${var.role_assume_policy_name}"
+  name                    = "${path.root}/${var.role_assume_policy_file}"
+  description             = "policy for ${var.role_assume_policy_file}"
   assume_role_policy      = file(var.role_assume_policy_file)
   path                    = "/"
   force_detach_policies   = "true"
