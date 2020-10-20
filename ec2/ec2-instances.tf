@@ -11,6 +11,7 @@ iam_instance_profile = var.iam_instance_profile
 ami                  = var.ami
 security_groups      = var.security_groups
 subnet_id            = var.subnet_id
+key_name             = var.key_name
 
   tags = {
   Name        = "${var.instance_name}-${count.index + 1}"

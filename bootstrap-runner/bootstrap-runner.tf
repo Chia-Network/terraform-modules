@@ -11,10 +11,16 @@ resource "aws_instance" "BootstrapRunner" {
   ami                  = var.ami
   security_groups      = var.security_groups
   subnet_id            = var.subnet_id
+  key_name             = var.key_name
 
   tags = {
   Name = "${ var.runner_name }-${count.index + 1}"
   application           = var.application_tag
+  }
+
+  provisioner "local-exec" {
+    command = "aws s3 cp s3://chia-terraform/networkchianet.pem/networkchianet.pem && chmod 0400 networkchianet.pem"
+
   }
 
   provisioner "remote-exec" {

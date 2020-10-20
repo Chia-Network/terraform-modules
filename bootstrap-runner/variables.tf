@@ -51,6 +51,11 @@ variable "application_tag" {
   default     = "mainnet"
 }
 
+variable "key_name" {
+  description = "ssh key for auth to this instance"
+  type        = "string"
+}
+
 variable "tags" {
   description = "Additional tags"
   type        = map

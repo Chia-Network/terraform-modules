@@ -11,6 +11,7 @@ resource "aws_instance" "ChiaRunner" {
   ami                  = var.ami
   security_groups      = var.security_groups
   subnet_id            = var.subnet_id
+  key_name             = var.key_name
 
   tags = {
   Name = "${ var.runner_name }-${count.index + 1}"
