@@ -1,7 +1,3 @@
-variable "custom_sg_rules" {
-  description = "used to pass custom rules to the module"
-}
-
 variable "vpn_cidr_block" {
   description = "cidr block of the vpn server"
   type        = string
