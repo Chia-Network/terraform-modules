@@ -8,36 +8,36 @@ resource "aws_security_group" "sg-admin" {
   vpc_id         = var.vpc
 
   ingress {
-    description      = var.desc-1
+    description      = lookup(var.custom_sg_rules,"user1_desc")
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = [var.ipv4-1]
-    ipv6_cidr_blocks = [var.ipv6-1]
+    cidr_blocks      = [lookup(var.custom_sg_rules,"user1_ipv4_cidr")]
+    ipv6_cidr_blocks = [lookup(var.custom_sg_rules,"user1_ipv6_cidr")]
   }
 
   ingress {
-    description      = var.desc-2
+    description      = lookup(var.custom_sg_rules,"user2_desc")
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    ipv6_cidr_blocks = [var.ipv6-2]
+    ipv6_cidr_blocks = [lookup(var.custom_sg_rules,"user2_ipv6_cidr")]
   }
 
   ingress {
-    description      = var.desc-3
+    description      = lookup(var.custom_sg_rules,"user3_desc")
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks       = [var.ipv4-3]
+    cidr_blocks       = [lookup(var.custom_sg_rules,"user3_ipv4_cidr")]
   }
 
   ingress {
-    description       = var.desc-4
+    description       = lookup(var.custom_sg_rules,"user4_desc")
     from_port         = 22
     to_port           = 22
     protocol          = "tcp"
-    cidr_blocks       = [var.ipv4-4]
+    cidr_blocks       = [lookup(var.custom_sg_rules,"user3_ipv4_cidr")]
   }
 
   tags = {
