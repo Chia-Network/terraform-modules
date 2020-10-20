@@ -19,8 +19,8 @@ resource "aws_iam_policy" "policy" {
 #
 
 resource "aws_iam_role" "role" {
-  name                    = var.role_name
-  description             = "policy for ${var.role_assume_policy_file}"
+  name                    = var.role_assume_policy_name
+  description             = "policy for ${var.role_assume_policy_name}"
   assume_role_policy      = file("${path.root}/var.role_assume_policy_file")
   path                    = "/"
   force_detach_policies   = "true"
