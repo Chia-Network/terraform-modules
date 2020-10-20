@@ -18,11 +18,6 @@ resource "aws_instance" "BootstrapRunner" {
   application           = var.application_tag
   }
 
-  provisioner "local-exec" {
-    command = "aws s3 cp s3://chia-terraform/networkchianet.pem/networkchianet.pem && chmod 0400 networkchianet.pem"
-
-  }
-
   provisioner "remote-exec" {
     inline = [
       "/home/ubuntu/actions-runner/config.sh --url https://github.com/Chia-Network --token ${ var.runner_token } --labels Bootstrap --runnergroup BootstrapRunner --unattended --replace",
