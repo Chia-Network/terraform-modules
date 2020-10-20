@@ -26,3 +26,13 @@ variable "profile_name" {
   type        = string
   default     = "test"
 }
+
+variable "policy_path" {
+  description = "the path to the policy file"
+  type        = string
+}
+
+variable "role_assume_policy_path" {
+  description = "the path to the role assume policy file"
+  type        = string
+}

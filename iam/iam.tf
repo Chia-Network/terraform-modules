@@ -2,11 +2,18 @@
 # Iam Policy for Chia Cloud Platform
 #  *policy, role, attachment, profile
 #
+resource "null_resource" "local_exec" {
+  provisioner "local-exec" {
+    command = "aws s3 cp ${var.policy_path} ./ && aws s3 cp ${var.role_assume_policy_path} "
+  }
+
+}
+
 
 resource "aws_iam_policy" "policy" {
   name        = var.policy_name
   description = "policy for ${var.policy_name}"
-  policy      = file("${path.root}/var.policy_file")
+  policy      = file("${path.root}/${var.policy_file}")
 
   lifecycle {
   create_before_destroy = true
@@ -21,7 +28,7 @@ resource "aws_iam_policy" "policy" {
 resource "aws_iam_role" "role" {
   name                    = var.role_assume_policy_name
   description             = "policy for ${var.role_assume_policy_name}"
-  assume_role_policy      = file("${path.root}/var.role_assume_policy_file")
+  assume_role_policy      = file("${path.root}/${var.role_assume_policy_file}")
   path                    = "/"
   force_detach_policies   = "true"
   lifecycle {
