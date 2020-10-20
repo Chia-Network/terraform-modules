@@ -53,7 +53,7 @@ variable "application_name" {
 
 variable "key_name" {
   description = "ssh key for auth to this instance"
-  type        = "string"
+  type        = string
 }
 
 variable "tags" {
