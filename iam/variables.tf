@@ -9,13 +9,13 @@ variable "policy_file" {
   type        = string
 }
 
-variable "role_name" {
+variable "role_assume_policy_name" {
   description = "the role name to create"
   type        = string
   default     = "test"
 }
 
-variable "role_file" {
+variable "role_assume_policy_file" {
   description = "path to the role file to create with"
   type        = string
   default     = "test"
