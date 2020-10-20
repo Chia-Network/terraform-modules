@@ -17,7 +17,7 @@ resource "aws_security_group" "sg-admin" {
   }
 
   ingress {
-    description      = lookup(var.custom_sg_rules,user2_desc
+    description      = lookup(var.custom_sg_rules,user2_desc)
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
