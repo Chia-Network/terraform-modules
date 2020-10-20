@@ -11,7 +11,7 @@ resource "aws_instance" "timelord" {
   subnet_id             = var.subnet_id
   security_groups       = var.security_groups
   key_name              = var.key_name
-  #iam_instance_profile = var.instance-role
+  #iam_instance_profile = var.instance-role+
 
   tags = {
   Name = "ChiaTimelord-${count.index + 1}"
