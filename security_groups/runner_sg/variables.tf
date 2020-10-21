@@ -2,7 +2,7 @@ variable "custom_sg_rules" {
   description = "used to pass custom rules to the module"
 }
 
-variable "bootstrap_security_group_id" {
+variable "bootstrap_sg" {
   description = "id of the bootstrap runners security group"
 }
 
