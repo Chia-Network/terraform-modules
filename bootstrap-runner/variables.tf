@@ -23,6 +23,10 @@ variable "instance_type" {
   default = "t3.medium"
 }
 
+variable "bootstrap_sg" {
+  description = "bootstrap group so these things can work on each other."
+}
+
 variable "ami" {
   description = "instance ami id"
   type = string
