@@ -9,7 +9,7 @@ resource "aws_instance" "BootstrapRunner" {
   instance_type          = var.instance_type
   iam_instance_profile   = var.iam_instance_profile
   ami                    = var.ami
-  vpc_security_group_ids = [ var.security_group_main},var.admin_sg ]
+  vpc_security_group_ids = [var.security_group_main,var.admin_sg]
   subnet_id              = var.subnet_id
   key_name               = var.key_name
 
