@@ -24,8 +24,12 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_groups" {
-  description = "Security Group for resources"
+variable "security_group_main" {
+  description = "Main Service Security Group for resources"
+}
+
+variable "admin_sg" {
+  description = "admin sg"
 }
 
 variable "availability_zones" {
