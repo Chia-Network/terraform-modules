@@ -5,17 +5,17 @@
 #
 
 resource "aws_instance" "ChiaRunner" {
-  count                = var.instance_count
-  instance_type        = var.instance_type
-  iam_instance_profile = var.iam_instance_profile
-  ami                  = var.ami
-  security_groups      = var.security_groups
-  subnet_id            = var.subnet_id
-  key_name             = var.key_name
+  count                  = var.instance_count
+  instance_type          = var.instance_type
+  iam_instance_profile   = var.iam_instance_profile
+  ami                    = var.ami
+  vpc_security_group_ids = [var.security_groups]
+  subnet_id              = var.subnet_id
+  key_name               = var.key_name
 
   tags = {
-  Name = "${ var.runner_name }-${count.index + 1}"
-  application = var.application_name
+  Name                   = "${ var.runner_name }-${count.index + 1}"
+  application            = var.application_name
   }
 
   provisioner "remote-exec" {

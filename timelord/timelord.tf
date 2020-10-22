@@ -5,12 +5,12 @@
 
 
 resource "aws_instance" "timelord" {
-  count                 = var.instance_count
-  ami                   = var.ami
-  instance_type         = var.instance_type
-  subnet_id             = var.subnet_id
-  security_groups       = var.security_groups
-  key_name              = var.key_name
+  count                  = var.instance_count
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  subnet_id              = var.subnet_id
+  vpc_security_group_ids = [var.security_groups]
+  key_name               = var.key_name
   #iam_instance_profile = var.instance-role+
 
   tags = {
