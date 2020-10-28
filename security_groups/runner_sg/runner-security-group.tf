@@ -29,7 +29,7 @@ resource "aws_security_group" "sg-runner" {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
-    security_groups  = var.bootstrap_sg
+    security_groups  = [var.bootstrap_sg]
   }
 
   tags = {
