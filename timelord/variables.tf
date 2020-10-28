@@ -2,6 +2,10 @@ variable "instance_count" {
 default = "1"
 }
 
+variable "volume_size" {
+default = "10"
+}
+
 variable "ec2_user" {
   description = "instance ec2 user"
   type        = string

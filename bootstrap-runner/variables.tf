@@ -2,6 +2,10 @@ variable "instance_count" {
 default = "1"
 }
 
+variable "volume_size" {
+default = "100"
+}
+
 variable "runner_name" {
   description = "Github Runner Name"
   type = string

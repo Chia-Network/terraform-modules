@@ -2,6 +2,10 @@ variable "instance_count" {
 default = "1"
 }
 
+variable "volume_size" {
+default = "10"
+}
+
 variable "instance_type" {
   description = "instance size/type"
   type        = string

@@ -12,6 +12,7 @@ resource "aws_instance" "ChiaRunner" {
   vpc_security_group_ids = [ var.security_group_main,var.admin_sg ]
   subnet_id              = var.subnet_id
   key_name               = var.key_name
+  volume_size            = var.volume_size
 
   tags = {
   Name                   = "${ var.runner_name }-${count.index + 1}"
