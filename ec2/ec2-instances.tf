@@ -12,10 +12,13 @@ ami                    = var.ami
 vpc_security_group_ids = [ var.security_group_main,var.admin_sg ]
 subnet_id              = var.subnet_id
 key_name               = var.key_name
-volume_size            = var.volume_size
 
   tags = {
   Name                 = "${var.instance_name}-${count.index + 1}"
   application          = var.application_tag
+  }
+
+  root_block_device {
+    volume_size = var.volume_size
   }
 }

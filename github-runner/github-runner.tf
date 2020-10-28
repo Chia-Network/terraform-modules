@@ -12,7 +12,6 @@ resource "aws_instance" "ChiaRunner" {
   vpc_security_group_ids = [ var.security_group_main,var.admin_sg ]
   subnet_id              = var.subnet_id
   key_name               = var.key_name
-  volume_size            = var.volume_size
 
   tags = {
   Name                   = "${ var.runner_name }-${count.index + 1}"
@@ -32,6 +31,10 @@ resource "aws_instance" "ChiaRunner" {
       user        = var.ec2_user
       private_key = file(var.ec2_key)
     }
+  }
+
+  root_block_device {
+    volume_size = var.volume_size
   }
 
   lifecycle {
