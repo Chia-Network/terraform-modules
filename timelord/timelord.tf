@@ -10,7 +10,7 @@ resource "aws_instance" "timelord" {
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
-  key_name               = var.ec2_key
+  key_name               = var.key_name
   #iam_instance_profile = var.instance-role+
 
   tags = {

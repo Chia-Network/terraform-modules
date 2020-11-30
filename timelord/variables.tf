@@ -16,6 +16,11 @@ variable "ec2_key" {
   type        = string
 }
 
+variable "key_name" {
+  description = "instance private key file aws name"
+  type        = string
+}
+
 variable "ami" {
   description = "instance ami id"
   type        = string
