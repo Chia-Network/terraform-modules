@@ -20,8 +20,7 @@ resource "aws_instance" "timelord" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo rm -rf /home/ubuntu/chia-blockchain",
-      "sudo mkdir /home/ubuntu/chia-blockchain && chown -r ubuntu:ubuntu /home/ubuntu/chia-blockchain",
+      "sudo rm -rf /home/ubuntu/chia-blockchain/ && sudo mkdir /home/ubuntu/chia-blockchain && sudo chown -R ubuntu:ubuntu /home/ubuntu/chia-blockchain",
     ]
     connection {
       type        = "ssh"
