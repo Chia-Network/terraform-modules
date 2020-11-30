@@ -32,7 +32,7 @@ resource "aws_instance" "timelord" {
 
   provisioner "file" {
     source      = "./chia-blockchain"
-    destination = "/home/ubuntu/chia-blockchain"
+    destination = "/home/ubuntu/"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -45,6 +45,7 @@ resource "aws_instance" "timelord" {
     inline = [
       "export CHIA_ROOT=~/.chia",
       "cd /home/ubuntu/chia-blockchain",
+      "sh install.sh",
       ". ./activate",
       "sh ./install-timelord.sh",
       "chia init",
