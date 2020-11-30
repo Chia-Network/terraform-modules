@@ -18,6 +18,18 @@ resource "aws_instance" "timelord" {
   application = var.application_tag
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "sudo rm -rf /home/ubuntu/chia-blockchain",
+      "sudo mkdir /home/ubuntu/chia-blockchain && chown -r ubuntu:ubuntu /home/ubuntu/chia-blockchain",
+    ]
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+
   provisioner "file" {
     source      = "./chia-blockchain"
     destination = "/home/ubuntu/chia-blockchain"
