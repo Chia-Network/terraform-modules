@@ -25,7 +25,7 @@ resource "aws_instance" "timelord" {
       type        = "ssh"
       host        = self.public_dns
       user        = var.ec2_user
-      private_key = file(var.ec2_key)
+      private_key = "${file("var.ec2_key")}"
     }
   }
 
@@ -44,7 +44,7 @@ resource "aws_instance" "timelord" {
       type        = "ssh"
       host        = self.public_dns
       user        = var.ec2_user
-      private_key = file(var.ec2_key)
+      private_key = "${file("var.ec2_key")}
     }
   }
 
