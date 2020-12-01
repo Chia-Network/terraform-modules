@@ -16,6 +16,11 @@ variable "ec2_key" {
   type        = string
 }
 
+variable "key_name" {
+  description = "instance private key file aws name"
+  type        = string
+}
+
 variable "ami" {
   description = "instance ami id"
   type        = string
@@ -32,7 +37,7 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_group_main" {
+variable "main_sg" {
   description = "Main Service Security Group for resources"
 }
 
@@ -50,11 +55,6 @@ variable "application_tag" {
   description = "the instance tag to use"
   type        = string
   default     = "testnet"
-}
-
-variable "key_name" {
-  description = "ssh key for auth to this instance"
-  type        = string
 }
 
 variable "tags" {
