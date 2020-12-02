@@ -58,7 +58,7 @@ resource "aws_instance" "BackupNode" {
       "ln -s /home/ubuntu/chia-blockchain /home/ubuntu/wallet-backup-service/chia-blockchain",
       "export CHIA_ROOT=~/.chia",
       "cd /home/ubuntu/wallet-backup-service && sudo chmod a+x ./install_ubuntu.sh && sh ./install_ubuntu.sh",
-      "systemctl restart backup-service",
+      "sudo systemctl restart backup-service",
     ]
     connection {
       type        = "ssh"
