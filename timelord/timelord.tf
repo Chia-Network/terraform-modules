@@ -51,7 +51,7 @@ resource "aws_instance" "timelord" {
       "chia init",
       "chia keys generate",
       "chia init",
-      "chia start timelord",
+      "chia start timelord &",
     ]
     connection {
       type        = "ssh"

@@ -50,7 +50,7 @@
       "chia init",
       "chia keys generate",
       "chia init",
-      "chia start introducer",
+      "chia start introducer &",
     ]
     connection {
       type        = "ssh"

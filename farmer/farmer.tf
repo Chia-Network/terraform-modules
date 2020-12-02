@@ -50,7 +50,7 @@ resource "aws_instance" "farmer" {
       "chia keys generate",
       "chia init",
       "chia plots add -d /chia-plots",
-      "chia start farmer",
+      "chia start farmer &",
     ]
     connection {
       type        = "ssh"
