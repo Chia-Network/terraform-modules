@@ -51,6 +51,7 @@ resource "aws_instance" "farmer" {
       "chia init",
       "chia plots add -d /chia-plots",
       "chia start farmer &",
+      "sleep 1"
     ]
     connection {
       type        = "ssh"
