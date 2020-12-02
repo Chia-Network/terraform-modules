@@ -11,7 +11,7 @@ resource "aws_instance" "BackupNode" {
   ami                  = var.ami
   security_groups      = var.security_groups
   subnet_id            = var.subnet_id
-    key_name           = var.key_name
+  key_name             = var.key_name
 
   tags = {
   Name = "ChiaBackupService-${count.index + 1}"
