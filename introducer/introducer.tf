@@ -42,7 +42,7 @@
   }
 
   provisioner "file" {
-    source      = ".chia_introducer/introducer-service"
+    source      = ".introducer-service"
     destination = "/home/ubuntu/chia-blockchain/introducer-service"
     connection {
       type        = "ssh"
