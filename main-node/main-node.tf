@@ -50,7 +50,7 @@ resource "aws_instance" "main-node" {
       "chia init",
       "chia keys generate",
       "chia init",
-      "chia start",
+      "nohup chia start node &",
     ]
     connection {
       type        = "ssh"
