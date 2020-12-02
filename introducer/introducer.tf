@@ -42,8 +42,8 @@
   }
 
   provisioner "file" {
-    source      = "./introducer-service"
-    destination = "/home/ubuntu/introducer-service"
+    source      = ".chia_introducer/introducer-service"
+    destination = "/home/ubuntu/chia-blockchain/introducer-service"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -54,7 +54,7 @@
 
   provisioner "remote-exec" {
     inline = [
-      "sudo cp /home/ubuntu/introducer-service  /etc/systemd/system/introducer-service.service",
+      "sudo cp /home/ubuntu/chia-blockchain/introducer-service  /etc/systemd/system/introducer-service.service",
       "export CHIA_ROOT=~/.chia",
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
