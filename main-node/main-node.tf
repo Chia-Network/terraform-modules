@@ -14,7 +14,7 @@ resource "aws_instance" "main-node" {
   #iam_instance_profile = var.instance-role+
 
   tags = {
-  Name = "ChiaTimelord-${count.index + 1}"
+  Name = "ChiaMainNode-${count.index + 1}"
   application = var.application_tag
   }
 
