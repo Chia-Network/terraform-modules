@@ -32,7 +32,7 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_group_main" {
+variable "main_sg" {
   description = "Main Service Security Group for resources"
 }
 
