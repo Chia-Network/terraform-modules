@@ -41,8 +41,20 @@
     }
   }
 
+  provisioner "file" {
+    source      = "./introducer-service"
+    destination = "/home/ubuntu/introducer-service"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
   provisioner "remote-exec" {
     inline = [
+      "sudo mv /home/ubuntu/introducer-service  /etc/systemd/system/introducer-service.service",
       "export CHIA_ROOT=~/.chia",
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
@@ -50,7 +62,7 @@
       "chia init",
       "chia keys generate",
       "chia init",
-      "chia start introducer &",
+      "systemctl enable introducer.service && systemctl start introducer.service",
     ]
     connection {
       type        = "ssh"
