@@ -62,7 +62,7 @@
       "chia init",
       "chia keys generate",
       "chia init",
-      "sudo systemctl enable introducer.service && sudo systemctl start introducer.service",
+      "sudo systemctl enable introducer-service && sudo systemctl start introducer-service",
     ]
     connection {
       type        = "ssh"
