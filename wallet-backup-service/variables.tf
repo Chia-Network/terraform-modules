@@ -1,3 +1,13 @@
+variable "ec2_user" {
+  description = "instance ec2 user"
+  type        = string
+}
+
+variable "ec2_key" {
+  description = "instance private key file"
+  type        = string
+}
+
 variable "instance_count" {
 default = "3"
 }
