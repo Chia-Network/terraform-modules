@@ -66,6 +66,7 @@
   provisioner "remote-exec" {
     inline = [
       "sudo cp /home/ubuntu/chia-blockchain/introducer-service  /etc/systemd/system/introducer-service.service",
+      "sudo chmod a+x /home/ubuntu/chia-blockchain/start-service.sh",
       "export CHIA_ROOT=~/.chia",
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
