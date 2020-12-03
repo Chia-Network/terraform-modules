@@ -42,15 +42,12 @@ resource "aws_instance" "farmer" {
 
   provisioner "remote-exec" {
     inline = [
-      "export CHIA_ROOT=~/.chia",
-      "cd /home/ubuntu/chia-blockchain",
-      "sh ./install.sh",
-      ". ./activate",
-      "chia init",
-      "chia keys generate",
-      "chia init",
-      "chia plots add -d /chia-plots",
-      "nohup chia start farmer &",
+    "export CHIA_ROOT=/home/ubuntu/.chia",
+    "cd /home/ubuntu/chia-blockchain",
+    "sh install.sh",
+    ". ./activate && chia init && chia keys generate && chia init",
+    "nohup chia start farmer &",
+    "sleep 60",
     ]
     connection {
       type        = "ssh"
