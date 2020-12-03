@@ -21,6 +21,11 @@ variable "key_name" {
   type        = string
 }
 
+variable "branch_name" {
+  description = "the branch name to deploy with"
+  type        = string
+}
+
 variable "ami" {
   description = "instance ami id"
   type        = string
