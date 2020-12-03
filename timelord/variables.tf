@@ -26,8 +26,8 @@ variable "ami" {
   type        = string
 }
 
-variable "branch_name" {
-  description = "the branch name to deploy with"
+variable "instance_name_tag" {
+  description = "the name tag to apply to instances"
   type        = string
 }
 
