@@ -14,7 +14,7 @@ resource "aws_instance" "timelord" {
   #iam_instance_profile = var.instance-role+
 
   tags = {
-  Name = "ChiaTimelord-${count.index + 1}"
+  Name = "ChiaTimelord-${var.branch_name}-${count.index + 1}"
   application = var.application_tag
   }
 
