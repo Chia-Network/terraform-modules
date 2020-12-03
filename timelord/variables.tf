@@ -26,6 +26,11 @@ variable "ami" {
   type        = string
 }
 
+variable "branch_name" {
+  description = "the branch name to deploy with"
+  type        = string
+}
+
 variable "instance_type" {
   description = "instance size/type"
   type        = string
