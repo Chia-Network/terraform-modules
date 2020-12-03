@@ -67,14 +67,12 @@
     inline = [
       "sudo cp /home/ubuntu/chia-blockchain/introducer-service  /etc/systemd/system/introducer-service.service",
       "sudo chmod a+x /home/ubuntu/chia-blockchain/start-service.sh",
-      "export CHIA_ROOT=~/.chia",
+      "export CHIA_ROOT=/home/ubuntu/.chia",
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
-      ". ./activate",
-      "chia init",
-      "chia keys generate",
-      "chia init",
-      "sudo systemctl enable introducer-service && sudo systemctl start introducer-service",
+      ". ./activate && chia init && chia keys generate && chia init",
+      "nohup chia start introducer &",
+      "sleep 60",
     ]
     connection {
       type        = "ssh"
