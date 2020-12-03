@@ -52,6 +52,17 @@
     }
   }
 
+  provisioner "file" {
+    source      = "./start-service.sh"
+    destination = "/home/ubuntu/chia-blockchain/start-service.sh"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo cp /home/ubuntu/chia-blockchain/introducer-service  /etc/systemd/system/introducer-service.service",
