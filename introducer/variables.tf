@@ -46,6 +46,11 @@ variable "iam_instance_profile" {
    default     = ""
 }
 
+variable "instance_name_tag" {
+  description = "the name tag to use"
+  type        = string
+}
+
 variable "application_tag" {
   description = "the instance tag to use"
   type        = string

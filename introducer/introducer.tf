@@ -11,10 +11,9 @@
     subnet_id              = var.subnet_id
     vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
     key_name               = var.key_name
-    #iam_instance_profile = var.instance-role+
 
     tags = {
-    Name = "ChiaIntroducer-${count.index + 1}"
+    Name = "ChiaIntroducer-${var.instance_name_tag}-${count.index + 1}"
     application = var.application_tag
     }
 
