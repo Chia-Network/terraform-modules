@@ -1,5 +1,5 @@
 variable "instance_count" {
-default = "1"
+default = "3"
 }
 
 variable "volume_size" {
@@ -23,6 +23,11 @@ variable "key_name" {
 
 variable "ami" {
   description = "instance ami id"
+  type        = string
+}
+
+variable "instance_name_tag" {
+  description = "the name tag to apply to instances"
   type        = string
 }
 

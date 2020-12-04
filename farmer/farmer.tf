@@ -13,7 +13,7 @@ resource "aws_instance" "farmer" {
   key_name               = var.key_name
 
   tags = {
-  Name = "ChiaFarmer-${count.index + 1}"
+  Name = "ChiaFarmer-${var.instance_name_tag}-${count.index + 1}"
   application = var.application_tag
   }
 
