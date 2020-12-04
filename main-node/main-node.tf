@@ -11,7 +11,7 @@ resource "aws_instance" "main-node" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
-  #iam_instance_profile = var.instance-role+
+  
 
   tags = {
   Name = "ChiaMainNode-${var.instance_name_tag}-${count.index + 1}"
