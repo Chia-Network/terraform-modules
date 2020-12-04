@@ -3,7 +3,7 @@ value       = aws_instance.timelord[0].public_dns
 description = "the public dns for this timelord instance"
 }
 
-output "public_ips" {
+output "public_ip" {
 value       = aws_instance.timelord[0].public_ip
 description = "the public ipv4 for this timelord instance"
 }
@@ -18,7 +18,7 @@ value       = aws_instance.timelord[1].public_dns
 description = "the public dns for this timelord instance"
 }
 
-output "public_ips2" {
+output "public_ip2" {
 value       = aws_instance.timelord[1].public_ip
 description = "the public ipv4 for this timelord instance"
 }
