@@ -44,6 +44,8 @@ resource "aws_instance" "plotter" {
   provisioner "remote-exec" {
     inline = [
     "cd ./chiapos",
+    "ls /dev | grep nvme",
+    "ll",
     "mkfs.ext4 /dev/nvme0n1 && mkdir /mnt/plots && mount /dev/nvme0n1 /mnt/plots",
     "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
     "chmod a+x plot-resources.py",
