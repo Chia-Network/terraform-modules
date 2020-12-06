@@ -34,7 +34,7 @@ variable "instance_name_tag" {
 variable "instance_type" {
   description = "instance size/type"
   type        = string
-  default     = "t3.micro"
+  default     = "i3en.large"
 }
 
 variable "subnet_id" {
