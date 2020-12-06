@@ -17,20 +17,10 @@ resource "aws_instance" "plotter" {
   application = var.application_tag
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo rm -rf /home/ubuntu/chia-blockchain/ && sudo mkdir /home/ubuntu/chia-blockchain && sudo chown -R ubuntu:ubuntu /home/ubuntu/chia-blockchain",
-    ]
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
+
 
   provisioner "file" {
-    source      = "./chia-blockchain"
+    source      = "./chiapos"
     destination = "/home/ubuntu/"
     connection {
       type        = "ssh"
@@ -40,13 +30,25 @@ resource "aws_instance" "plotter" {
     }
   }
 
+  provisioner "file" {
+    source      = "./test/plot-resources.py"
+    destination = "/home/ubuntu/chiapos/"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
   provisioner "remote-exec" {
     inline = [
-    "export CHIA_ROOT=/home/ubuntu/.chia",
-    "cd /home/ubuntu/chia-blockchain",
-    "sh install.sh",
-    ". ./activate && chia init && chia keys generate && chia init",
-    "nohup chia start plotter &",
+    "cd ./chiapos",
+    "mkfs.ext4 /dev/nvme1n1 && mkdir /mnt/plots && mount /dev/nvme1n1 /mnt/plots",
+    "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
+    "chmod a+x plot-resources.py",
+    "pip install psutil",
+    "nohup python ./plot-resources.py 32 &",
     "sleep 60",
     ]
     connection {
