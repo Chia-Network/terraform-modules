@@ -31,8 +31,8 @@ resource "aws_instance" "plotter" {
   }
 
   provisioner "file" {
-    source      = "./test/plot-resources.py"
-    destination = "/home/ubuntu/chiapos/"
+    source      = "./chia-plotter/test/plot-resources.py"
+    destination = "/home/ubuntu/chiapos/plot-resources.py"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -44,9 +44,9 @@ resource "aws_instance" "plotter" {
   provisioner "remote-exec" {
     inline = [
     "cd ./chiapos",
-    "mkfs.ext4 /dev/nvme0n1 && mkdir /mnt/plots && mount /dev/nvme0n1 /mnt/plots",
+    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/plots && sudo mount /dev/nvme1n1 /mnt/plots && sudo chown ubuntu:ubuntu /mnt/plots",
     "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
-    "chmod a+x plot-resources.py",
+    "chmod a+x ./plot-resources.py",
     "pip install psutil",
     "nohup python ./plot-resources.py 32 &",
     "sleep 60",
