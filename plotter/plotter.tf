@@ -48,7 +48,7 @@ resource "aws_instance" "plotter" {
     "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
     "sudo chmod a+x /home/ubuntu/chiapos/plot-resources.py",
     "pip3 install psutil",
-    "nohup python3 ./plot-resources.py 32 &",
+    "python3 ./plot-resources.py 32 & >> ./plotter.log",
     "sleep 60",
     ]
     connection {
