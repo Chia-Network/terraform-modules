@@ -44,11 +44,11 @@ resource "aws_instance" "plotter" {
   provisioner "remote-exec" {
     inline = [
     "cd ./chiapos",
-    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/plots && sudo mount /dev/nvme1n1 /mnt/plots && sudo mkdir /mnt/plots/temp && sudo mkdir /mnt/plots/final && sudo chown -r ubuntu:ubuntu /mnt/plots",
+    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/plots && sudo mount /dev/nvme1n1 /mnt/plots && sudo mkdir /mnt/plots/temp && sudo mkdir /mnt/plots/final && sudo chown -R ubuntu:ubuntu /mnt/plots",
     "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
     "sudo chmod a+x /home/ubuntu/chiapos/plot-resources.py",
     "pip3 install psutil",
-    "nohup python3 ./plot-resources.py 32 &",
+    "python3 /home/ubuntu/chiapos/plot-resources.py 32 & >> /home/ubuntu/chiapos/plotter.log",
     "sleep 60",
     ]
     connection {
