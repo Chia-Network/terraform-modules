@@ -66,10 +66,9 @@ resource "aws_instance" "main-node" {
 
   provisioner "remote-exec" {
     inline = [
-    "export CHIA_ROOT=/home/ubuntu/.chia",
     "cd /home/ubuntu/chia-blockchain",
     "sh install.sh",
-    ". ./activate && chia init && chia keys generate && chia init",
+    ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia && chia init && chia keys generate && chia init",
     "nohup chia start node &",
     "sleep 60",
     ]
