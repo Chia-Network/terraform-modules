@@ -78,7 +78,8 @@
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
-      ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia && chia init && chia keys generate && chia init",
+      ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia && chia init",
+      "cp /home/ubuntu/.chia/config.yaml /home/ubuntu/.chia/config.yaml && cp /home/ubuntu/.chia/trusted.crt /home/ubuntu/.chia/trusted.crt && cp /home/ubuntu/.chia/trusted.key /home/ubuntu/.chia/trusted.key",
       "nohup chia start introducer &",
       "sleep 60",
     ]
