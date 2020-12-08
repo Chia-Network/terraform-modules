@@ -3,7 +3,12 @@ default = "1"
 }
 
 variable "volume_size" {
-default = "10"
+default = "100"
+}
+
+variable "runner_name" {
+  description = "Github Runner Name"
+  type = string
 }
 
 variable "ec2_user" {
@@ -16,33 +21,31 @@ variable "ec2_key" {
   type        = string
 }
 
-variable "key_name" {
-  description = "instance private key file aws name"
-  type        = string
+variable "instance_type" {
+  description = "instance size/type"
+  type = string
+  default = "i3en.xlarge"
 }
 
-variable "instance_name_tag" {
-  description = "the name tag to apply to instances"
-  type        = string
+variable "bootstrap_sg" {
+  description = "bootstrap group so these things can work on each other."
 }
 
 variable "ami" {
   description = "instance ami id"
-  type        = string
+  type = string
 }
 
-variable "instance_type" {
-  description = "instance size/type"
-  type        = string
-  default     = "t3.micro"
+variable "iam_instance_profile" {
+  description = "IAM Instance Profile to use for Resource"
+  type = string
 }
 
 variable "subnet_id" {
   description = "The ID of the VPC that the instance security group belongs to"
-  type        = string
 }
 
-variable "main_sg" {
+variable "security_group_main" {
   description = "Main Service Security Group for resources"
 }
 
@@ -50,16 +53,19 @@ variable "admin_sg" {
   description = "admin sg"
 }
 
-variable "iam_instance_profile" {
-   description = "IAM Instance Profile to use for Resource"
-   type        = string
-   default     = ""
+variable "runner_token" {
+  description = "the github token for registering runners"
 }
 
 variable "application_tag" {
   description = "the instance tag to use"
   type        = string
-  default     = "testnet"
+  default     = "mainnet"
+}
+
+variable "key_name" {
+  description = "ssh key for auth to this instance"
+  type        = string
 }
 
 variable "tags" {
