@@ -91,4 +91,10 @@ resource "aws_instance" "main-node" {
   create_before_destroy = true
 
   }
+
+  timeouts {
+    create = "30"
+    update = "30"
+    delete = "180"
+  }
 }

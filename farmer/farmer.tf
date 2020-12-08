@@ -86,4 +86,12 @@ resource "aws_instance" "farmer" {
   create_before_destroy = true
 
   }
+
+  timeouts {
+    create = "30"
+    update = "30"
+    delete = "180"
+  }
+
+
 }
