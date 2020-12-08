@@ -70,6 +70,7 @@ resource "aws_instance" "farmer" {
     ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia",
     "chia init",
     "chia keys add -m fabric method minute select embody wish educate coast win horror tissue erosion mosquito dog faculty category alley aware chair senior scan unfold swarm peace",
+    "chia keys add -m gorilla term next panel domain hard west stem sustain chase sort door stone cram venue loyal core calm unable already travel shrug wide consider",
     "chia init",
     "nohup chia start farmer &",
     "sleep 60",
