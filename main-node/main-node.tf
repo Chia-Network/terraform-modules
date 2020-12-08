@@ -11,7 +11,7 @@ resource "aws_instance" "main-node" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
-  
+
 
   tags = {
   Name = "ChiaMainNode-${var.instance_name_tag}-${count.index + 1}"
@@ -42,11 +42,36 @@ resource "aws_instance" "main-node" {
   }
 
   provisioner "remote-exec" {
+  inline = [
+    "sudo rm -rf /home/ubuntu/.chia && sudo mkdir /home/ubuntu/.chia && sudo chown -R ubuntu:ubuntu /home/ubuntu/.chia",
+  ]
+  connection {
+    type        = "ssh"
+    host        = self.public_dns
+    user        = var.ec2_user
+    private_key = file(var.ec2_key)
+    }
+  }
+
+  provisioner "file" {
+    source      = "./config"
+    destination = "/home/ubuntu/.chia/"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
+  provisioner "remote-exec" {
     inline = [
-    "export CHIA_ROOT=/home/ubuntu/.chia",
     "cd /home/ubuntu/chia-blockchain",
     "sh install.sh",
-    ". ./activate && chia init && chia keys generate && chia init",
+    ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia",
+    "chia init",
+    "chia keys generate",
+    "chia init",
     "nohup chia start node &",
     "sleep 60",
     ]
