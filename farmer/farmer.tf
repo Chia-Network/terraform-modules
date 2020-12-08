@@ -67,7 +67,10 @@ resource "aws_instance" "farmer" {
     inline = [
     "cd /home/ubuntu/chia-blockchain",
     "sh install.sh",
-    ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia && chia init && chia keys add -m fabric method minute select embody wish educate coast win horror tissue erosion mosquito dog faculty category alley aware chair senior scan unfold swarm peace",
+    ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia",
+    "chia init",
+    "chia keys add -m fabric method minute select embody wish educate coast win horror tissue erosion mosquito dog faculty category alley aware chair senior scan unfold swarm peace",
+    "chia init",
     "nohup chia start farmer &",
     "sleep 60",
     ]
