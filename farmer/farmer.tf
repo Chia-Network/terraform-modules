@@ -63,6 +63,10 @@ resource "aws_instance" "farmer" {
     }
   }
 
+  provisioner "local-exec" {
+    command = "ansible-playbook -i '${self.public_dns'},' --private-key ${var.ec2_key} config-generator.yml"
+  }
+
   provisioner "remote-exec" {
     inline = [
     "cd /home/ubuntu/chia-blockchain",
