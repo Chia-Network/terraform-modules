@@ -20,7 +20,7 @@ resource "aws_instance" "main-node" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo rm -rf /home/ubuntu/chia-blockchain/ && sudo mkdir /home/ubuntu/chia-blockchain && sudo chown -R ubuntu:ubuntu /home/ubuntu/chia-blockchain",
+      "sudo rm -rf /home/ubuntu/chia-blockchain/ && sudo mkdir /home/ubuntu/chia-blockchain && sudo chown -R ubuntu:ubuntu /home/ubuntu/chia-blockchain && mkdir /home/ubuntu/.chia && mkdir /home/ubuntu/.chia/config",
     ]
     connection {
       type        = "ssh"
@@ -55,7 +55,7 @@ resource "aws_instance" "main-node" {
 
   provisioner "file" {
     source      = "./config"
-    destination = "/home/ubuntu/.chia/"
+    destination = "/home/ubuntu/.chia/config"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -68,7 +68,8 @@ resource "aws_instance" "main-node" {
     inline = [
     "cd /home/ubuntu/chia-blockchain",
     "sh install.sh",
-    ". ./activate && export CHIA_ROOT=/home/ubuntu/.chia",
+    ". ./activate",
+    "export CHIA_ROOT=/home/ubuntu/.chia",
     "chia init",
     "nohup chia start node &",
     "sleep 60",

@@ -64,7 +64,7 @@
 
   provisioner "file" {
     source      = "./config"
-    destination = "/home/ubuntu/.chia/"
+    destination = "/home/ubuntu/.chia/config"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -79,9 +79,9 @@
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
       ". ./activate",
-      "cp -rf /home/ubuntu/.chia/* /home/ubuntu/.chia/config/",
-      "cat /home/ubuntu/.chia/config/config.yaml",
       "export CHIA_ROOT=/home/ubuntu/.chia",
+      "chia init",
+      "chia keys generate",
       "chia init",
       "nohup chia start introducer &",
       "sleep 60",
