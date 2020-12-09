@@ -10,7 +10,6 @@ variable "record_name" {
 
 variable "records" {
   description = "the destination records"
-  type        = string
 }
 
 variable "record_type" {
