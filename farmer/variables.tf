@@ -6,14 +6,13 @@ variable "volume_size" {
 default = "10"
 }
 
-variable "ec2_user" {
-  description = "instance ec2 user"
-  type        = string
-}
-;
-
 variable "introducer_dns" {
   description = "the dns for the introducer"
+  type        = string
+}
+
+variable "ec2_user" {
+  description = "instance ec2 user"
   type        = string
 }
 
