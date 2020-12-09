@@ -79,9 +79,10 @@
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",
       ". ./activate",
+      "cp -rf /home/ubuntu/.chia/* /home/ubuntu/.chia/config/",
+      "cat /home/ubuntu/.chia/config/config.yaml",
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "chia init",
-      "cat /home/ubuntu/.chia/config/config.yaml",
       "nohup chia start introducer &",
       "sleep 60",
     ]
