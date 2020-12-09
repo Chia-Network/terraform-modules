@@ -10,6 +10,12 @@ variable "ec2_user" {
   description = "instance ec2 user"
   type        = string
 }
+;
+
+variable "introducer_dns" {
+  description = "the dns for the introducer"
+  type        = string
+}
 
 variable "ec2_key" {
   description = "instance private key file"

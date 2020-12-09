@@ -64,7 +64,7 @@ resource "aws_instance" "farmer" {
   }
 
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key ${var.ec2_key} -i '${self.public_dns},' config-generator.yml"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key ${var.ec2_key} -i '${self.public_dns},' config-generator.yml --extravars \"introducer_dns=${var.introducer_dns}\""
   }
 
   provisioner "remote-exec" {
