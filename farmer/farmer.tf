@@ -90,8 +90,8 @@ resource "aws_instance" "farmer" {
   }
 
   timeouts {
-    create = "30m"
-    update = "30m"
+    create = "60m"
+    update = "60m"
     delete = "180m"
   }
 
