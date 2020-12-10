@@ -64,7 +64,7 @@
 
   provisioner "file" {
     source      = "./config"
-    destination = "/home/ubuntu/.chia/config"
+    destination = "/home/ubuntu/.chia/"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -81,8 +81,8 @@
       ". ./activate",
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "chia init",
-      #"chia keys generate",
-      #"chia init",
+      "chia keys generate",
+      "chia init",
       "nohup chia start introducer &",
       "sleep 60",
     ]
