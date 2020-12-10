@@ -82,7 +82,7 @@
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "chia init",
       #"chia keys generate",
-      "chia init",
+      #"chia init",
       "nohup chia start introducer &",
       "sleep 60",
     ]
