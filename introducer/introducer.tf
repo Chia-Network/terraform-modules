@@ -42,6 +42,7 @@
 
   provisioner "remote-exec" {
     inline = [
+      "mkdir /home/ubuntu/.chia",
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "cd /home/ubuntu/chia-blockchain",
       "sh install.sh",

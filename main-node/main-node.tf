@@ -55,6 +55,7 @@ resource "aws_instance" "main-node" {
 
   provisioner "remote-exec" {
     inline = [
+    "mkdir /home/ubuntu/.chia",
     "cd /home/ubuntu/chia-blockchain",
     "sh install.sh",
     ". ./activate",
