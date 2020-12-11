@@ -60,7 +60,7 @@ resource "aws_instance" "timelord" {
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "sh ./install-timelord.sh",
       "chia init",
-      "chia configure --set-node-introducer ${introducer_address} --set-fullnode-port ${full_node_port}",
+      "chia configure --set-node-introducer ${var.introducer_address} --set-fullnode-port ${full_node_port}",
       "nohup chia start timelord &",
       "sleep 60",
 
