@@ -6,6 +6,16 @@ variable "volume_size" {
 default = "10"
 }
 
+variable "introducer" {
+  description = "introducer address"
+  type        = string
+}
+
+variable "full_node_port" {
+  description = "port for peer to peer coms on blockchain"
+  type        = string
+}
+
 variable "ec2_user" {
   description = "instance ec2 user"
   type        = string
