@@ -52,17 +52,6 @@ resource "aws_instance" "timelord" {
     }
   }
 
-  provisioner "file" {
-    source      = "./config"
-    destination = "/home/ubuntu/.chia/config"
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [
       "cd /home/ubuntu/chia-blockchain",
@@ -71,6 +60,7 @@ resource "aws_instance" "timelord" {
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "sh ./install-timelord.sh",
       "chia init",
+      "chia configure --set-node-introducer ${introducer_address} --set-fullnode-port ${full_node_port}",
       "nohup chia start timelord &",
       "sleep 60",
 

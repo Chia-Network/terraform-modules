@@ -40,39 +40,6 @@
     }
   }
 
-  provisioner "file" {
-    source      = "./introducer-service"
-    destination = "/home/ubuntu/chia-blockchain/introducer-service"
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
-
-  provisioner "file" {
-    source      = "./start-service.sh"
-    destination = "/home/ubuntu/chia-blockchain/start-service.sh"
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
-
-  provisioner "file" {
-    source      = "./config"
-    destination = "/home/ubuntu/.chia/"
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [
       "export CHIA_ROOT=/home/ubuntu/.chia",
@@ -81,6 +48,7 @@
       ". ./activate",
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "chia init",
+      "chia configure --set-node-introducer ${introducer_address} --set-fullnode-port ${full_node_port}",
       "chia keys generate",
       "chia init",
       "nohup chia start introducer &",

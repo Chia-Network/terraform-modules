@@ -52,17 +52,6 @@ resource "aws_instance" "farmer" {
     }
   }
 
-  provisioner "file" {
-    source      = "./config"
-    destination = "/home/ubuntu/.chia/config"
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [
     "cd /home/ubuntu/chia-blockchain",
@@ -70,6 +59,7 @@ resource "aws_instance" "farmer" {
     ". ./activate",
     "export CHIA_ROOT=/home/ubuntu/.chia",
     "chia init",
+    "chia configure --set-node-introducer ${introducer_address} --set-fullnode-port ${full_node_port}",
     "chia keys add -m fabric method minute select embody wish educate coast win horror tissue erosion mosquito dog faculty category alley aware chair senior scan unfold swarm peace",
     "chia keys add -m gorilla term next panel domain hard west stem sustain chase sort door stone cram venue loyal core calm unable already travel shrug wide consider",
     "chia init",
@@ -90,8 +80,8 @@ resource "aws_instance" "farmer" {
   }
 
   timeouts {
-    create = "30m"
-    update = "30m"
+    create = "60m"
+    update = "60m"
     delete = "180m"
   }
 
