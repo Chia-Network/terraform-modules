@@ -61,7 +61,7 @@ resource "aws_instance" "farmer" {
     "export CHIA_ROOT=/home/ubuntu/.chia",
     "chia init",
     "chia plots add -d /chia-plots",
-    "chia configure --set-node-introducer ${var.introducer} --set-fullnode-port ${var.full_node_port}",
+    "chia configure --set-node-introducer ${var.introducer} --set-fullnode-port ${var.full_node_port} --set-log-level INFO",
     "chia keys add -m fabric method minute select embody wish educate coast win horror tissue erosion mosquito dog faculty category alley aware chair senior scan unfold swarm peace",
     "chia keys add -m gorilla term next panel domain hard west stem sustain chase sort door stone cram venue loyal core calm unable already travel shrug wide consider",
     "chia init",

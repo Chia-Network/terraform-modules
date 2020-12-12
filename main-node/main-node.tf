@@ -61,7 +61,7 @@ resource "aws_instance" "main-node" {
     ". ./activate",
     "export CHIA_ROOT=/home/ubuntu/.chia",
     "chia init",
-    "chia configure --set-node-introducer ${var.introducer} --set-fullnode-port ${var.full_node_port}",
+    "chia configure --set-node-introducer ${var.introducer} --set-fullnode-port ${var.full_node_port} --set-log-level INFO",
     "nohup chia start node &",
     "sleep 60",
     ]
