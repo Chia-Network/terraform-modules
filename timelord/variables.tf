@@ -6,6 +6,11 @@ variable "volume_size" {
 default = "10"
 }
 
+variable "branch" {
+  description = "branch name"
+  type        = string
+}
+
 variable "introducer" {
   description = "introducer address"
   type        = string
@@ -72,7 +77,7 @@ variable "application_tag" {
   default     = "testnet"
 }
 
-variable "tags" {
+variable "extra_tags" {
   description = "Additional tags"
   type        = map
   default     = {}

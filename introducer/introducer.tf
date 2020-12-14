@@ -11,11 +11,7 @@
     subnet_id              = var.subnet_id
     vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
     key_name               = var.key_name
-
-    tags = {
-    Name = "ChiaIntroducer-${var.instance_name_tag}-${count.index + 1}"
-    application = var.application_tag
-    }
+    tags                   = "${merge(map("Name", "ChiaIntroducer-${count.index + 1}-${var.instance_name_tag}", "application", "${var.application_tag}", "branch", "${var.branch}",), var.extra_tags)}"
 
     provisioner "remote-exec" {
     inline = [
@@ -77,4 +73,5 @@
     update = "30m"
     delete = "180m"
   }
+
 }

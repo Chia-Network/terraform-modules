@@ -6,6 +6,11 @@ variable "volume_size" {
 default = "10"
 }
 
+variable "branch" {
+  description = "branch name"
+  type        = string
+}
+
 variable "introducer" {
   description = "introducer address"
   type        = string
@@ -26,15 +31,25 @@ variable "ec2_key" {
   type        = string
 }
 
+variable "key_name" {
+  description = "instance private key file aws name"
+  type        = string
+}
+
 variable "ami" {
   description = "instance ami id"
+  type        = string
+}
+
+variable "instance_name_tag" {
+  description = "the name tag to apply to instances"
   type        = string
 }
 
 variable "instance_type" {
   description = "instance size/type"
   type        = string
-  default     = "t3.micro"
+  default     = "t3.medium"
 }
 
 variable "subnet_id" {
@@ -56,23 +71,13 @@ variable "iam_instance_profile" {
    default     = ""
 }
 
-variable "instance_name_tag" {
-  description = "the name tag to use"
-  type        = string
-}
-
 variable "application_tag" {
   description = "the instance tag to use"
   type        = string
   default     = "testnet"
 }
 
-variable "key_name" {
-  description = "ssh key for auth to this instance"
-  type        = string
-}
-
-variable "tags" {
+variable "extra_tags" {
   description = "Additional tags"
   type        = map
   default     = {}

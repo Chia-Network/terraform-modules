@@ -6,6 +6,11 @@ variable "volume_size" {
 default = "10"
 }
 
+variable "branch" {
+  description = "branch name"
+  type        = string
+}
+
 variable "introducer" {
   description = "introducer address"
   type        = string
@@ -44,7 +49,7 @@ variable "ami" {
 variable "instance_type" {
   description = "instance size/type"
   type        = string
-  default     = "t3.micro"
+  default     = "t3.medium"
 }
 
 variable "subnet_id" {
@@ -72,7 +77,7 @@ variable "application_tag" {
   default     = "testnet"
 }
 
-variable "tags" {
+variable "extra_tags" {
   description = "Additional tags"
   type        = map
   default     = {}
