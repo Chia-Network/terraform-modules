@@ -72,7 +72,16 @@ variable "application_tag" {
   default     = "testnet"
 }
 
-variable "tags" {
+variable "default_tags" {
+  description = "Additional tags"
+  type        = map
+  default     = {
+    Name: "ChiaFarmer-${var.instance_name_tag}-${count.index + 1}",
+    application: "${var.application_tag}",
+  }
+}
+
+variable "extra_tags" {
   description = "Additional tags"
   type        = map
   default     = {}

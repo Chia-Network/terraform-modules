@@ -12,10 +12,7 @@ resource "aws_instance" "farmer" {
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
 
-  tags = {
-  Name = "ChiaFarmer-${var.instance_name_tag}-${count.index + 1}"
-  application = var.application_tag
-  }
+  tags = "${merge(var.default_tags, var.extra_tags)}"
 
   provisioner "remote-exec" {
     inline = [
