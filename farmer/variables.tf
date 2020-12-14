@@ -6,6 +6,11 @@ variable "volume_size" {
 default = "10"
 }
 
+variable "branch" {
+  description = "branch name"
+  type        = string
+}
+
 variable "introducer" {
   description = "introducer address"
   type        = string
