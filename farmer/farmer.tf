@@ -83,5 +83,26 @@ resource "aws_instance" "farmer" {
     delete = "180m"
   }
 
+}
 
+resource "aws_resourcegroups_group" "farmers" {
+  name = "farmers-${var.branch}"
+
+  resource_query {
+    query = <<JSON
+{
+  "ResourceTypeFilters": [
+    "AWS::EC2::Instance"
+  ],
+  "TagFilters": [
+    {
+      "Key": "application",
+      "Values": ["testnet"],
+      "Key": "branch",
+      "Values": ["${var.branch}"]
+    }
+  ]
+}
+JSON
+  }
 }

@@ -42,3 +42,8 @@ output "ipv6_addresses3" {
 value       = aws_instance.farmer[2].ipv6_addresses
 description = "the ipv6 ipv6_addresses for this farmer instance"
 }
+
+output "resource_group_arn" {
+value       = aws_resourcegroups_group.farmers.arn
+description = "the arn assigned to this resource group"
+}
