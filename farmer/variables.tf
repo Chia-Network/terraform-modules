@@ -75,10 +75,7 @@ variable "application_tag" {
 variable "default_tags" {
   description = "Additional tags"
   type        = map
-  default     = {
-    Name: "ChiaFarmer-${var.instance_name_tag}-${count.index + 1}",
-    application: "${var.application_tag}",
-  }
+  default     = {}
 }
 
 variable "extra_tags" {
