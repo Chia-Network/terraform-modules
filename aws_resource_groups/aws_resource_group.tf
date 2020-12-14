@@ -18,3 +18,4 @@ resource "aws_resourcegroups_group" "resource_group" {
 }
 JSON
   }
+}
