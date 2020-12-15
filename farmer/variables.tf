@@ -71,6 +71,11 @@ variable "iam_instance_profile" {
    default     = ""
 }
 
+variable "branch" {
+   description = "the branch to pass to tags"
+   type        = string
+}
+
 variable "application_tag" {
   description = "the instance tag to use"
   type        = string
