@@ -77,7 +77,7 @@ variable "application_tag" {
   default     = "testnet"
 }
 
-variable "tags" {
+variable "extra_tags" {
   description = "Additional tags"
   type        = map
   default     = {}
