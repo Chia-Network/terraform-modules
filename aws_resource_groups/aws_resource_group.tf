@@ -1,5 +1,5 @@
 resource "aws_resourcegroups_group" "resource_group" {
-  name = "${var.application}-${var.branch}"
+  name = "${var.application}-${var.branch}-${var.tag_name}"
 
   resource_query {
     query = <<JSON
