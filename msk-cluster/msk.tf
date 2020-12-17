@@ -99,8 +99,8 @@ resource "aws_msk_cluster" "chiametrics" {
       data.aws_subnet.sub2.id,
       data.aws_subnet.sub3.id,
     ]
-    ebs_volume_size = "1000"
-    instance_type = "kafka.m5.large"
+    ebs_volume_size = "300"
+    instance_type = "kafka.t3.small"
     security_groups = [
       aws_security_group.chiametrics.id
     ]
