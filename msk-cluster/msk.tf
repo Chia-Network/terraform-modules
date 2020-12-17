@@ -120,7 +120,7 @@ resource "aws_msk_cluster" "chiametrics" {
 
 data "aws_route53_zone" "r53_zone_data" {
   name         = var.hosted_zone
-  private_zone = true
+  private_zone = false
 }
 
 resource "aws_route53_record" "chia_metrics_dns_es" {
@@ -130,4 +130,3 @@ resource "aws_route53_record" "chia_metrics_dns_es" {
   ttl = 60
   records = [aws_msk_cluster.chiametrics.bootstrap_brokers]
 }
-
