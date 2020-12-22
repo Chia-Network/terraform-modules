@@ -40,28 +40,28 @@ resource "aws_security_group" "chiametrics" {
     from_port = 9092
     protocol = "tcp"
     to_port = 9092
-    cidr_blocks = ["10.0.0.0/20"]
+    cidr_blocks = ["10.0.0.0/0"]
   }
 
   ingress {
     from_port = 9094
     protocol = "tcp"
     to_port = 9094
-    cidr_blocks = ["10.0.0.0/20"]
+    cidr_blocks = ["10.0.0.0/0"]
   }
 
   ingress {
     from_port = 2181
     protocol = "tcp"
     to_port = 2181
-    cidr_blocks = ["10.0.0.0/20"]
+    cidr_blocks = ["10.0.0.0/0"]
   }
 
   egress {
     from_port = 0
     protocol = "-1"
     to_port = 0
-    cidr_blocks = ["0.0.0.0/20"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
