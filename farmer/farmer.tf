@@ -36,6 +36,17 @@ resource "aws_instance" "farmer" {
     }
   }
 
+  provisioner "file" {
+    source      = "./vector.toml"
+    destination = "/home/ubuntu/"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
   provisioner "remote-exec" {
   inline = [
     "sudo rm -rf /home/ubuntu/.chia && sudo mkdir /home/ubuntu/.chia && sudo chown -R ubuntu:ubuntu /home/ubuntu/.chia",
@@ -62,6 +73,11 @@ resource "aws_instance" "farmer" {
     "chia keys add -m gorilla term next panel domain hard west stem sustain chase sort door stone cram venue loyal core calm unable already travel shrug wide consider",
     "chia init",
     "nohup chia start farmer &",
+    "curl --proto '=https' --tlsv1.2 -sSf https://sh.vector.dev | sh",
+    "export PATH=\"/home/ubuntu/.vector/bin:$PATH\"",
+    "sudo mkdir /var/lib/vector/",
+    "sudo chown ubuntu:ubuntu /var/lib/vector/",
+    "nohup vector --config ./vector.toml > vector.log &",
     "sleep 60",
     ]
     connection {
