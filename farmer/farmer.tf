@@ -36,6 +36,21 @@ resource "aws_instance" "farmer" {
     }
   }
 
+  provisioner "remote-exec" {
+  inline = [
+    "curl -1sLf 'https://repositories.timber.io/public/vector/cfg/setup/bash.deb.sh' | sudo -E bash",
+    "sudo apt install -y vector",
+  ]
+  connection {
+    type        = "ssh"
+    host        = self.public_dns
+    user        = var.ec2_user
+    private_key = file(var.ec2_key)
+    }
+  }
+
+
+
   provisioner "file" {
     source      = "./vector.toml"
     destination = "/etc/vector/vector.toml"
