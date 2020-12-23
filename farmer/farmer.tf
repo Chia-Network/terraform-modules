@@ -53,7 +53,7 @@ resource "aws_instance" "farmer" {
 
   provisioner "file" {
     source      = "./vector.toml"
-    destination = "/etc/vector/vector.toml"
+    destination = "/home/ubuntu/vector.toml"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -76,7 +76,8 @@ resource "aws_instance" "farmer" {
 
   provisioner "remote-exec" {
     inline = [
-      "mkdir /home/ubuntu/.chia",
+    "sudo cp /home/ubuntu/vector.toml /etc/vector/vector.toml",
+    "mkdir /home/ubuntu/.chia",
     "cd /home/ubuntu/chia-blockchain",
     "sh install.sh",
     ". ./activate",
