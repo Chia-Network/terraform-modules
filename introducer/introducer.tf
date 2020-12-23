@@ -37,7 +37,32 @@
   }
 
   provisioner "remote-exec" {
+  inline = [
+    "curl -1sLf 'https://repositories.timber.io/public/vector/cfg/setup/bash.deb.sh' | sudo -E bash",
+    "sudo apt install -y vector",
+  ]
+  connection {
+    type        = "ssh"
+    host        = self.public_dns
+    user        = var.ec2_user
+    private_key = file(var.ec2_key)
+    }
+  }
+
+  provisioner "file" {
+    source      = "./vector.toml"
+    destination = "/home/ubuntu/vector.toml"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
+  provisioner "remote-exec" {
     inline = [
+      "sudo cp /home/ubuntu/vector.toml /etc/vector/vector.toml",
       "mkdir /home/ubuntu/.chia",
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "cd /home/ubuntu/chia-blockchain",
@@ -49,6 +74,8 @@
       "chia keys generate",
       "chia init",
       "nohup chia start introducer &",
+      "sudo systemctl enable vector",
+      "sudo systemctl restart vector",
       "sleep 60",
     ]
     connection {

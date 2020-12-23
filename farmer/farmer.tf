@@ -49,8 +49,6 @@ resource "aws_instance" "farmer" {
     }
   }
 
-
-
   provisioner "file" {
     source      = "./vector.toml"
     destination = "/home/ubuntu/vector.toml"
@@ -89,7 +87,6 @@ resource "aws_instance" "farmer" {
     "chia keys add -m gorilla term next panel domain hard west stem sustain chase sort door stone cram venue loyal core calm unable already travel shrug wide consider",
     "chia init",
     "nohup chia start farmer &",
-    "cat /etc/vector/vector.toml",
     "sudo systemctl enable vector",
     "sudo systemctl restart vector",
     "sleep 60",
