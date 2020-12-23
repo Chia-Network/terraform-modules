@@ -38,7 +38,7 @@ resource "aws_instance" "farmer" {
 
   provisioner "file" {
     source      = "./vector.toml"
-    destination = "/home/ubuntu/"
+    destination = "/etc/vector/vector.toml"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -73,11 +73,9 @@ resource "aws_instance" "farmer" {
     "chia keys add -m gorilla term next panel domain hard west stem sustain chase sort door stone cram venue loyal core calm unable already travel shrug wide consider",
     "chia init",
     "nohup chia start farmer &",
-    "curl --proto '=https' --tlsv1.2 -sSf https://sh.vector.dev | sh",
-    "export PATH=\"/home/ubuntu/.vector/bin:$PATH\"",
-    "sudo mkdir /var/lib/vector/",
-    "sudo chown ubuntu:ubuntu /var/lib/vector/",
-    "nohup vector --config ./vector.toml > vector.log &",
+    "cat /etc/vector/vector.toml",
+    "sudo systemctl enable vector",
+    "sudo systemctl restart vector",
     "sleep 60",
     ]
     connection {
