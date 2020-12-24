@@ -38,7 +38,7 @@ provisioner "remote-exec" {
 
   provisioner "remote-exec" {
   inline = [
-    "vector --config /etc/vector/vector.toml",
+    "sudo cp /home/ubuntu/vector.toml /etc/vector/vector.toml",
     "sudo systemctl enable vector",
     "sudo systemctl restart vector",
   ]
