@@ -25,6 +25,14 @@ resource "aws_security_group" "sg-runner" {
   }
 
   ingress {
+    description = "SSH from VPN internal"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = [var.vpn_internal_cidr_block]
+  }
+
+  ingress {
     description      = "from the bootstrap runner"
     from_port        = 0
     to_port          = 0
