@@ -1,3 +1,7 @@
+variable "k_size" {
+default = "27"
+}
+
 variable "instance_count" {
 default = "1"
 }
