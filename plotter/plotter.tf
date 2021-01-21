@@ -19,7 +19,7 @@ resource "aws_instance" "plotter" {
 
   provisioner "remote-exec" {
     inline = [
-    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/nvme && sudo mount /dev/nvme1n1 /mnt/nvme && sudo mkdir /mnt/nvme/plots && sudo mkdir /mnt/nvme/plots/temp && sudo mkdir /mnt/plots/final && sudo chown -R ubuntu:ubuntu /mnt/nvme",
+    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/nvme && sudo mount /dev/nvme1n1 /mnt/nvme && sudo mkdir /mnt/nvme/plots && sudo mkdir /mnt/nvme/plots/temp && sudo mkdir /mnt/nvme/plots/final && sudo chown -R ubuntu:ubuntu /mnt/nvme",
     ]
     connection {
       type        = "ssh"
