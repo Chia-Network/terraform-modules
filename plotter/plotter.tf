@@ -42,7 +42,7 @@ resource "aws_instance" "plotter" {
 
   provisioner "file" {
     source      = "./chia-plotter/plot.sh"
-    destination = "/mnt/nvme/plots.sh"
+    destination = "/mnt/nvme/plot.sh"
     connection {
       type        = "ssh"
       host        = self.public_dns
