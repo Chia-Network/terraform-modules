@@ -56,7 +56,7 @@ resource "aws_instance" "plotter" {
     "cd /mnt/nvme/chiapos",
     "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
     "sudo chmod a+x /mnt/nvme/plot.sh",
-    "sh /mnt/nvme/plot.sh ${var.k_size}",
+    "nohup sh /mnt/nvme/plot.sh ${var.k_size} &",
     "sleep 60",
     ]
     connection {
