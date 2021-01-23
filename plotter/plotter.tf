@@ -19,7 +19,7 @@ resource "aws_instance" "plotter" {
 
   provisioner "remote-exec" {
     inline = [
-    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/nvme && sudo mount /dev/nvme1n1 /mnt/nvme && sudo mkdir /mnt/nvme/plots && sudo mkdir /mnt/nvme/plots/temp && sudo mkdir /mnt/nvme/plots/final && sudo chown -R ubuntu:ubuntu /mnt/nvme",
+    "sudo mkfs.ext4 /dev/nvme1n1 && sudo mkdir /mnt/nvme && sudo mount /dev/nvme1n1 /mnt/nvme",
     ]
     connection {
       type        = "ssh"
@@ -40,9 +40,21 @@ resource "aws_instance" "plotter" {
     }
   }
 
+  provisioner "remote-exec" {
+    inline = [
+    "sudo mkdir /mnt/nvme/chiapos/plots && sudo mkdir /mnt/nvme/chiapos/plots/temp && sudo mkdir /mnt/nvme/chiapos/plots/final && sudo chown -R ubuntu:ubuntu /mnt/nvme",
+    ]
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
   provisioner "file" {
     source      = "./chia-plotter/plot.sh"
-    destination = "/mnt/nvme/plot.sh"
+    destination = "/mnt/nvme/chiapos/plot.sh"
     connection {
       type        = "ssh"
       host        = self.public_dns
