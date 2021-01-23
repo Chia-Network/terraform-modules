@@ -66,10 +66,9 @@ resource "aws_instance" "plotter" {
   provisioner "remote-exec" {
     inline = [
     "sudo chmod -R 777 /mnt/nvme",
-    "cd /mnt/nvme/chiapos",
     "sudo chmod a+x /mnt/nvme/chiapos/plot.sh",
     "touch /mnt/nvme/chiapos/plotter.log",
-    "sh /mnt/nvme/chiapos/plot.sh ${var.k_size} > ./plotter.log",
+    "nohup sh /mnt/nvme/chiapos/plot.sh ${var.k_size} > ./plotter.log &",
     "sleep 60",
     ]
     connection {
