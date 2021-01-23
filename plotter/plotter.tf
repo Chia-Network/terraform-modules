@@ -69,7 +69,7 @@ resource "aws_instance" "plotter" {
     "sudo chmod a+x /mnt/nvme/chiapos/plot.sh",
     "touch /mnt/nvme/chiapos/plotter.log",
     "echo ${var.k_size}",
-    "nohup sh /mnt/nvme/chiapos/plot.shh ${var.k_size} > /mnt/nvme/chiapos/plotter.log  &",
+    "nohup sh /mnt/nvme/chiapos/plot.sh ${var.k_size} > /mnt/nvme/chiapos/plotter.log  &",
     "sleep 60",
     ]
     connection {
