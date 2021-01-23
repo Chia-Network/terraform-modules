@@ -53,6 +53,7 @@ resource "aws_instance" "plotter" {
 
   provisioner "remote-exec" {
     inline = [
+    "sudo chmod -R 777 /mnt/nvme",
     "cd /mnt/nvme/",
     "mkdir build && cd build && cmake ../ && cmake --build . -- -j 6",
     "sudo chmod a+x /mnt/nvme/plot.sh",
