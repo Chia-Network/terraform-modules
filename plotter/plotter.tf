@@ -53,7 +53,7 @@ resource "aws_instance" "plotter" {
   }
 
   provisioner "file" {
-    source      = "./chia-plotter/plot.sh"
+    source      = "./plot.sh"
     destination = "/mnt/nvme/chiapos/plot.sh"
     connection {
       type        = "ssh"
