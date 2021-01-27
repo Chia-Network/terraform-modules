@@ -3,10 +3,10 @@ variable "vpn_cidr_block" {
   type        = string
 }
 
-variable "vpn_internal_cidr_block" {
-  description = "cidr block of the vpn server"
-  type        = string
-}
+#variable "vpn_internal_cidr_block" {
+#  description = "cidr block of the vpn server"
+#  type        = string
+#}
 
 variable "vpn_ipv6_cidr_block" {
   description = "ipv6 cidr block of the vpn server"
