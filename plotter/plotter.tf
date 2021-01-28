@@ -53,8 +53,8 @@ resource "aws_instance" "plotter" {
   }
 
   provisioner "file" {
-    source      = "./plot.sh"
-    destination = "/mnt/nvme/chiapos/plot.sh"
+    source      = "./plot-${var.k_size}.sh"
+    destination = "/mnt/nvme/chiapos/plot-${var.k_size}.sh"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -66,10 +66,10 @@ resource "aws_instance" "plotter" {
   provisioner "remote-exec" {
     inline = [
     "sudo chmod -R 777 /mnt/nvme",
-    "sudo chmod a+x /mnt/nvme/chiapos/plot.sh",
+    "sudo chmod a+x /mnt/nvme/chiapos/plot-${var.k_size}.sh",
     "touch /mnt/nvme/chiapos/plotter.log",
     "echo ${var.k_size}",
-    "nohup sh /mnt/nvme/chiapos/plot.sh ${var.k_size} > /mnt/nvme/chiapos/plotter.log  &",
+    "nohup sh /mnt/nvme/chiapos/plot-${var.k_size}.sh ${var.k_size} > /mnt/nvme/chiapos/plotter.log  &",
     "sleep 60",
     ]
     connection {
