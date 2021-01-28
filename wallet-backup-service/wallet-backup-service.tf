@@ -32,7 +32,7 @@ resource "aws_instance" "BackupNode" {
   }
 
   provisioner "file" {
-    source      = "./chia-blockchain"
+    source      = "./*"
     destination = "/home/ubuntu/"
     connection {
       type        = "ssh"
