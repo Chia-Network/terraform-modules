@@ -48,14 +48,6 @@ resource "aws_security_group" "sg-backup" {
     ipv6_cidr_blocks = [var.vpn_ipv6_cidr_block]
   }
 
-  ingress {
-    description = "SSH from VPN internal"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = [var.vpn_internal_cidr_block]
-  }
-
   tags = {
     Name = "Wallet backup instances security group"
     application = var.application_tag
