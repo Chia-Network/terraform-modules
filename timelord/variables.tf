@@ -49,7 +49,7 @@ variable "instance_name_tag" {
 variable "instance_type" {
   description = "instance size/type"
   type        = string
-  default     = "c5.9xlarge"
+  default     = "c5.4xlarge"
 }
 
 variable "subnet_id" {
