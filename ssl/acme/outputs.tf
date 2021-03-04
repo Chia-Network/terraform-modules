@@ -13,7 +13,7 @@ value       = acme_certificate.certificate.issuer_pem
 description = "the issuer cert"
 }
 
-output "full_chain" {
+output "ssl_chain" {
 value       = "${acme_certificate.certificate.certificate_pem}${acme_certificate.certificate.issuer_pem}"
 description = "the full chain cert"
 }
