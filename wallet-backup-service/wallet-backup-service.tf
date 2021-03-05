@@ -56,7 +56,7 @@ resource "aws_instance" "BackupNode" {
 
   provisioner "file" {
     source      = "./nginx/reverse-proxy.conf"
-    destination = "/etc/nginx/sites-enabled/reverse-proxy.conf"
+    destination = "/home/ubuntu/"
     connection {
       type        = "ssh"
       host        = self.public_dns
@@ -67,6 +67,7 @@ resource "aws_instance" "BackupNode" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo mv /home/ubuntu/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf",
       "chmod 777 /etc/nginx/sites-enabled/reverse-proxy.conf",
       "ln -s /home/ubuntu/chia-blockchain /home/ubuntu/wallet-backup-service/chia-blockchain",
       "export CHIA_ROOT=~/.chia",
