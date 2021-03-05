@@ -22,7 +22,6 @@ resource "aws_instance" "BackupNode" {
     inline = [
       "sudo rm -rf /home/ubuntu/chia-blockchain/ && sudo mkdir /home/ubuntu/chia-blockchain && sudo chown -R ubuntu:ubuntu /home/ubuntu/chia-blockchain",
       "sudo rm -rf /home/ubuntu/wallet-backup-service/ && sudo mkdir /home/ubuntu/wallet-backup-service && sudo chown -R ubuntu:ubuntu /home/ubuntu/wallet-backup-service",
-      "sudo rm -rf /etc/nginx/sites-enabled/reverse-proxy.conf",
     ]
     connection {
       type        = "ssh"
@@ -54,21 +53,8 @@ resource "aws_instance" "BackupNode" {
     }
   }
 
-  provisioner "file" {
-    source      = "./nginx/reverse-proxy.conf"
-    destination = "/home/ubuntu/"
-    connection {
-      type        = "ssh"
-      host        = self.public_dns
-      user        = var.ec2_user
-      private_key = file(var.ec2_key)
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [
-      "sudo mv /home/ubuntu/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf",
-      "chmod 777 /etc/nginx/sites-enabled/reverse-proxy.conf",
       "ln -s /home/ubuntu/chia-blockchain /home/ubuntu/wallet-backup-service/chia-blockchain",
       "export CHIA_ROOT=~/.chia",
       "cd /home/ubuntu/wallet-backup-service && sudo chmod a+x ./install_ubuntu.sh && sh ./install_ubuntu.sh",
