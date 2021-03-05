@@ -9,3 +9,7 @@ variable "ssl_cert" {
 variable "ssl_key" {
   type = string
 }
+
+variable "ssl_chain" {
+  type = string
+}
