@@ -70,7 +70,7 @@ resource "aws_instance" "plotter" {
     "touch /mnt/nvme/chiapos/plotter.log",
     "echo ${var.k_size}",
     "echo ${self.public_dns}",
-    "nohup sh /mnt/nvme/chiapos/plot-${var.k_size}.sh ${var.k_size} ${self.public_dns} > /mnt/nvme/chiapos/plotter.log  &",
+    "nohup sh /mnt/nvme/chiapos/plot-${var.k_size}.sh ${var.k_size} ${self.public_dns} ${var.ref}> /mnt/nvme/chiapos/plotter.log  &",
     "sleep 60",
     ]
     connection {

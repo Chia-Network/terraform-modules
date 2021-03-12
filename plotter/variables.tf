@@ -1,3 +1,7 @@
+variable "ref" {
+default = ""
+}
+
 variable "k_size" {
 default = "27"
 }
