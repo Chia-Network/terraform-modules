@@ -11,7 +11,7 @@ resource "aws_instance" "farmer" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
-  tags                   = "${merge(map("Name", "ChiaFarmer${count.index + 1}-${var.instance_name_tag}", "application", "${var.application_tag}", "branch", "${var.branch}",), var.extra_tags)}"
+  tags                   = merge(map("Name", "ChiaFarmer${count.index + 1}-${var.instance_name_tag}", "application", var.application_tag, "branch", var.branch,), var.extra_tags)
 
   provisioner "remote-exec" {
     inline = [
@@ -83,8 +83,8 @@ resource "aws_instance" "farmer" {
     "chia init",
     "chia plots add -d /chia-plots",
     "chia configure --set-node-introducer ${var.introducer} --set-fullnode-port ${var.full_node_port} --set-log-level INFO",
-    "chia keys add -m \"${var.farmer_keys1}\"",
-    "chia keys add -m \"${var.farmer_keys2}\"",
+    "chia keys add -m \"var.farmer_keys1\"",
+    "chia keys add -m \"var.farmer_keys2\"",
     "chia init",
     "nohup chia start farmer &",
     "sudo systemctl enable vector",
