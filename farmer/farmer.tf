@@ -68,6 +68,7 @@ resource "aws_instance" "farmer" {
     "nohup chia start farmer &",
     "sudo systemctl enable vector",
     "sudo systemctl restart vector",
+    "curl -H \"Content-Type: application/json\" -X POST --data \"{\"msg\":\"Farmer ${self.public_dns} for: ${var.ref } deployed! Name Tag: ${var.instance_name_tag}\"}\" https://bots.keybase.io/webhookbot/DKC7n8Dg8eCwZuVyT7O9_XlbM7c",
     "sleep 60",
     ]
     connection {
@@ -77,18 +78,6 @@ resource "aws_instance" "farmer" {
       private_key = file(var.ec2_key)
     }
   }
-
-  provisioner "remote-exec" {
-   command=<<EOT
-   curl -H "Content-Type: application/json" -X POST --data "{\"msg\":\"Farmer ${self.public_dns} for: ${var.ref } deployed! Name Tag: ${var.instance_name_tag}\"}" https://bots.keybase.io/webhookbot/DKC7n8Dg8eCwZuVyT7O9_XlbM7c
-EOT
-  connection {
-    type        = "ssh"
-    host        = self.public_dns
-    user        = var.ec2_user
-    private_key = file(var.ec2_key)
-  }
-}
 
   lifecycle {
   create_before_destroy = true
