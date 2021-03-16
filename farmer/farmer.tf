@@ -68,6 +68,10 @@ resource "aws_instance" "farmer" {
     "nohup chia start farmer &",
     "sudo systemctl enable vector",
     "sudo systemctl restart vector",
+    "curl --header "Content-Type: application/json" \
+      --request POST \
+      --data "{\"msg\":\"Farmer ${self.public_dns} for: ${{ steps.set_branch.outputs.ref }} deployed! Name Tag: ${{ steps.set_branch.outputs.instance_name_tag }}\"}" \
+      https://bots.keybase.io/webhookbot/DKC7n8Dg8eCwZuVyT7O9_XlbM7c",
     "sleep 60",
     ]
     connection {
