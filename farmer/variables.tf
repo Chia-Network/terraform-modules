@@ -74,8 +74,8 @@ variable "iam_instance_profile" {
    default     = ""
 }
 
-variable "branch" {
-   description = "the branch to pass to tags"
+variable "ref" {
+   description = "the ref to pass"
    type        = string
 }
 
