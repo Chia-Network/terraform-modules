@@ -62,7 +62,6 @@ resource "aws_instance" "farmer" {
 
   provisioner "remote-exec" {
     inline = [
-    "sudo apt-get install -y git",
     "cd /home/ubuntu && git clone https://github.com/Chia-Network/chia-blockchain.git",
     "cd /home/ubuntu/chia-blockchain && git checkout ${var.ref}",
     "sudo cp /home/ubuntu/vector.toml /etc/vector/vector.toml",
