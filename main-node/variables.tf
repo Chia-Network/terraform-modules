@@ -6,8 +6,8 @@ variable "volume_size" {
 default = "10"
 }
 
-variable "branch" {
-  description = "branch name"
+variable "ref" {
+  description = "ref name"
   type        = string
 }
 
