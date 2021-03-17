@@ -81,7 +81,7 @@ resource "aws_instance" "farmer" {
     "nohup chia start farmer &",
     "sudo systemctl enable vector",
     "sudo systemctl restart vector",
-    "sh /home/ubuntu/report.sh ${self.public_dns} ${var.ref} ${var.instance_name_tag}",
+    "sudo chmod +x /home/ubuntu/report.sh && sh /home/ubuntu/report.sh ${self.public_dns} ${var.ref} ${var.instance_name_tag}",
     "sleep 60",
     ]
     connection {
