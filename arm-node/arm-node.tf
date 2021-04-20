@@ -9,7 +9,7 @@ resource "aws_instance" "arm-node" {
   ami                    = var.ami
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
-  vpc_security_group_ids = [ var.arm_sg,var.admin_sg ]
+  vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
   tags                   = merge(map("Name", "ChiaArmNode${count.index + 1}-${var.instance_name_tag}", "application", "${var.application_tag}", "ref", "${var.ref}",), var.extra_tags)
 
