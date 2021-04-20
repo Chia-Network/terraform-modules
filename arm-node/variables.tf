@@ -61,10 +61,6 @@ variable "main_sg" {
   description = "Main Service Security Group for resources"
 }
 
-variable "admin_sg" {
-  description = "admin sg"
-}
-
 variable "iam_instance_profile" {
    description = "IAM Instance Profile to use for Resource"
    type        = string
