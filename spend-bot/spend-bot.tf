@@ -24,33 +24,31 @@ resource "aws_instance" "spend-bot" {
     }
   }
 
-  provisioner "remote-exec" {
-  inline = [
-    "sudo rm -rf /home/ubuntu/.chia && sudo mkdir /home/ubuntu/.chia && sudo chown -R ubuntu:ubuntu /home/ubuntu/.chia",
-  ]
-  connection {
-    type        = "ssh"
-    host        = self.public_dns
-    user        = var.ec2_user
-    private_key = file(var.ec2_key)
+  provisioner "file" {
+    source      = "./spendbot-vars.sh"
+    destination = "/home/ubuntu/spendbot-vars.sh"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
     }
   }
 
   provisioner "remote-exec" {
     inline = [
-      git clone git@github.com:Chia-Network/Chia-Exchange.git
-      git checkout spend_bot
-      git submodule update --init
-      cd chia-blockchain
-      git checkout testnet_6
-      cd ..
-      python3 -m venv venv
-      ln -s venv/bin/activate
-      . ./activate
-      pip install --upgrade pip
-      pip install -e chia-blockchain/
-      pip install -e .
-      python exchange/start_wallet_server.py
+      "git clone git@github.com:Chia-Network/Chia-Exchange.git",
+      "cd Chia-Exchange",
+      "git checkout spend_bot",
+      #vi setup.py # remove pandas
+      "git submodule update --init",
+      "python3 -m venv venv",
+      "ln -s venv/bin/activate",
+      ". ./activate"
+      "pip install --upgrade pip",
+      "pip install -e chia-blockchain/",
+      "pip install -e .",
+      "python exchange/start_wallet_server.py",
     ]
     connection {
       type        = "ssh"
