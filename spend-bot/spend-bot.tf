@@ -44,7 +44,7 @@ resource "aws_instance" "spend-bot" {
       "git submodule update --init",
       "python3 -m venv venv",
       "ln -s venv/bin/activate",
-      ". ./activate"
+      ". ./activate",
       "pip install --upgrade pip",
       "pip install -e chia-blockchain/",
       "pip install -e .",
