@@ -49,7 +49,7 @@ resource "aws_instance" "spend-bot" {
   provisioner "remote-exec" {
     inline = [
       "git clone https://${var.github_key}@github.com/Chia-Network/Chia-Exchange.git",
-      "/home/ubuntu/spendbot-install.sh",
+      "sudo chmod a+x /home/ubuntu/spendbot-install.sh && sh /home/ubuntu/spendbot-install.sh",
     ]
     connection {
       type        = "ssh"
