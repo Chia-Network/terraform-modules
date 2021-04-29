@@ -37,7 +37,7 @@ resource "aws_instance" "spend-bot" {
 
   provisioner "remote-exec" {
     inline = [
-      "git clone https://${var.github_key}.github.com/Chia-Network/Chia-Exchange.git"
+      "git clone https://${var.github_key}.github.com/Chia-Network/Chia-Exchange.git",
       "cd Chia-Exchange",
       "git checkout spend_bot",
       #vi setup.py # remove pandas
