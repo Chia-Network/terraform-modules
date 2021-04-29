@@ -1,3 +1,7 @@
+variable "github_key" {
+type         = string
+}
+
 variable "instance_count" {
 default = "1"
 }
