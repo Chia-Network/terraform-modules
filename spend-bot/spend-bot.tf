@@ -35,20 +35,21 @@ resource "aws_instance" "spend-bot" {
     }
   }
 
+  provisioner "file" {
+    source      = "./spendbot-install.sh"
+    destination = "/home/ubuntu/spendbot-install.sh"
+    connection {
+      type        = "ssh"
+      host        = self.public_dns
+      user        = var.ec2_user
+      private_key = file(var.ec2_key)
+    }
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "git clone https://${var.github_key}.github.com/Chia-Network/Chia-Exchange.git",
-      "cd Chia-Exchange",
-      "git checkout spend_bot",
-      #vi setup.py # remove pandas
-      "git submodule update --init",
-      "python3 -m venv venv",
-      "ln -s venv/bin/activate",
-      ". ./activate",
-      "pip install --upgrade pip",
-      "pip install -e chia-blockchain/",
-      "pip install -e .",
-      "python exchange/start_wallet_server.py",
+      "git clone https://${var.github_key}@github.com/Chia-Network/Chia-Exchange.git",
+      "/home/ubuntu/spendbot-install.sh",
     ]
     connection {
       type        = "ssh"
