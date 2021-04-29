@@ -49,6 +49,7 @@ resource "aws_instance" "spend-bot" {
   provisioner "remote-exec" {
     inline = [
       "sudo chmod a+x /home/ubuntu/spendbot-install.sh && sh /home/ubuntu/spendbot-install.sh",
+      "sleep 60",
     ]
     connection {
       type        = "ssh"
