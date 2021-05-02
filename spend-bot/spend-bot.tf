@@ -49,6 +49,16 @@ resource "aws_instance" "spend-bot" {
   provisioner "remote-exec" {
     inline = [
       "sudo chmod a+x /home/ubuntu/spendbot-install.sh && sh /home/ubuntu/spendbot-install.sh",
+      "python3 -m venv venv",
+      "ln -s venv/bin/activate",
+      "screen -S bot",
+      ". ./activate",
+      "pip install --upgrade pip",
+      "pip install -e chia-blockchain/",
+      "pip install -e .",
+      "chia init",
+      "chia keys generate",
+      "python exchange/start_wallet_server.py",
       "sleep 60",
     ]
     connection {
