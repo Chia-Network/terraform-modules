@@ -10,7 +10,7 @@ resource "aws_instance" "faucet-node" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [var.main_sg, var.admin_sg]
   key_name               = var.key_name
-  tags                   = merge(map("Name", "ChiaFaucetNode${count.index + 1}-${var.instance_name_tag}", "application", var.application_tag, "chia_ref", var.chia_ref, ), var.extra_tags)
+  tags                   = merge(tomap({"Name" = "ChiaFaucetNode${count.index + 1}-${var.instance_name_tag}", "application" = var.application_tag, "chia_ref" = var.chia_ref}), var.extra_tags)
 
   provisioner "remote-exec" {
     inline = [
