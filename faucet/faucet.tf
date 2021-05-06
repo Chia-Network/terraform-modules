@@ -36,7 +36,6 @@ resource "aws_instance" "faucet-node" {
       "export CHIA_ROOT=/home/ubuntu/.chia",
       "chia init",
       "chia configure --set-node-introducer ${var.introducer} --set-fullnode-port ${var.full_node_port} --set-log-level INFO",
-      "nohup chia start wallet &",
       //"sudo chmod +x /home/ubuntu/report.sh && sh /home/ubuntu/report.sh ${self.public_dns} ${var.chia_ref} ${var.instance_name_tag}",
       "sleep 60",
     ]
