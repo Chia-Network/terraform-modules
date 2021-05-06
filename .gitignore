@@ -44,3 +44,33 @@ terraform.rc]
 
 #ansible
 *vars.yml*
+
+# terraform
+**/.terraform
+**/*.tfstate*
+**/.terragrunt-cache
+**/*.tfplan*
+**/secrets.tfvars
+**/terraform.log
+plan.html
+
+# python
+.venv
+
+# editors
+**/.idea
+
+# system
+**.DS_Store
+
+# k8
+kube/cache/**
+kube/http-cache/**
+
+# spinnaker
+spinnaker/hal/.backup/**
+**/.secret/*
+
+# ecr-login
+**/ecr-login
+**/ecr-login-mac
