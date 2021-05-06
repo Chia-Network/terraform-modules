@@ -53,6 +53,7 @@ terraform.rc]
 **/secrets.tfvars
 **/terraform.log
 plan.html
+**.terraform.lock.hcl
 
 # python
 .venv
