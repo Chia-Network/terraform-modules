@@ -8,7 +8,7 @@ resource "aws_instance" "faucet-node" {
   ami                    = var.ami
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
-  vpc_security_group_ids = [var.main_sg, var.admin_sg]
+  vpc_security_group_ids = concat([var.main_sg, var.admin_sg], var.additional_security_groups)
   key_name               = var.key_name
   iam_instance_profile   = var.iam_instance_profile
   tags                   = merge(tomap({"Name" = "ChiaFaucetNode${count.index + 1}-${var.instance_name_tag}", "application" = var.application_tag, "chia_ref" = var.chia_ref}), var.extra_tags)

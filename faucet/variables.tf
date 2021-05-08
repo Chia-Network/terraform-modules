@@ -65,6 +65,12 @@ variable "admin_sg" {
   description = "admin sg"
 }
 
+variable "additional_security_groups" {
+  description = "Any additional SGs to add to the instance"
+  type        = list(string)
+  default     = []
+}
+
 variable "iam_instance_profile" {
    description = "IAM Instance Profile to use for Resource"
    type        = string
