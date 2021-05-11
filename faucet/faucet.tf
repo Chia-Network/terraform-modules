@@ -12,6 +12,7 @@ resource "aws_instance" "faucet-node" {
   key_name               = var.key_name
   iam_instance_profile   = var.iam_instance_profile
   tags                   = merge(tomap({"Name" = "ChiaFaucetNode${count.index + 1}-${var.instance_name_tag}", "application" = var.application_tag, "chia_ref" = var.chia_ref}), var.extra_tags)
+  ebs_optimized          = true
 
   provisioner "remote-exec" {
     inline = [
