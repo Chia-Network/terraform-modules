@@ -52,7 +52,7 @@ variable "application_tag" {
 }
 
 variable "component_tag" {
-  description = "the component of the application. Ex dns-introducer, fullnode, farmer, etc"
+  description = "the component of the application. Ex dns-introducer, node, farmer, etc"
   type        = string
 }
 

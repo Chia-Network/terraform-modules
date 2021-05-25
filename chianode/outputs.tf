@@ -22,3 +22,7 @@ output "instance_ids" {
   value       = aws_instance.chianode.*.id
   description = "Instance IDs for all instances created in this module"
 }
+
+output "load_balancer_dns_names" {
+  value = aws_lb.chianode.*.dns_name
+}
