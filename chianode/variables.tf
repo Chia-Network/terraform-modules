@@ -106,6 +106,7 @@ variable "set_cloudflare_dns" {
 variable "cloudflare_zone" {
   description = "Name of the zone to add the records to in cloudflare"
   type        = string
+  default     = ""
 }
 
 variable "dns_ttl" {
@@ -116,4 +117,5 @@ variable "dns_ttl" {
 variable "dns_name_prefix" {
   description = "Prefix for the dns name that will be generated for the load balancers. Will have the deployset added"
   type        = string
+  default     = ""
 }
