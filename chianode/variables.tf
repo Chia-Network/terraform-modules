@@ -97,3 +97,23 @@ variable "lb_ipv6" {
   description = "Should ipv6 be enabled for the LB"
   type        = bool
 }
+
+variable "set_cloudflare_dns" {
+  type    = bool
+  default = false
+}
+
+variable "cloudflare_zone" {
+  description = "Name of the zone to add the records to in cloudflare"
+  type        = string
+}
+
+variable "dns_ttl" {
+  type    = number
+  default = 300
+}
+
+variable "dns_name_prefix" {
+  description = "Prefix for the dns name that will be generated for the load balancers. Will have the deployset added"
+  type        = string
+}

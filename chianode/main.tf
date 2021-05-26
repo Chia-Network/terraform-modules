@@ -104,3 +104,21 @@ resource "aws_lb_target_group_attachment" "chianode" {
   target_id        = aws_instance.chianode[count.index].id
   port             = var.lb_port
 }
+
+data "cloudflare_zones" "zone" {
+  count = var.set_cloudflare_dns ? 0 : 1
+
+  filter {
+    name = var.cloudflare_zone
+  }
+}
+
+resource "cloudflare_record" "loadbalancers" {
+  count = var.set_cloudflare_dns ? 0 : 1
+
+  zone_id = data.cloudflare_zones.zone.id
+  name    = "${var.dns_name_prefix}-${var.deployset_tag}"
+  value   = aws_lb.chianode.dns_name
+  type    = "CNAME"
+  ttl     = var.dns_ttl
+}
