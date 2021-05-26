@@ -106,7 +106,7 @@ resource "aws_lb_target_group_attachment" "chianode" {
 }
 
 data "cloudflare_zones" "zone" {
-  count = var.set_cloudflare_dns ? 0 : 1
+  count = var.set_cloudflare_dns == true ? 1 : 0
 
   filter {
     name = var.cloudflare_zone
@@ -114,7 +114,7 @@ data "cloudflare_zones" "zone" {
 }
 
 resource "cloudflare_record" "loadbalancers" {
-  count = var.set_cloudflare_dns ? 0 : 1
+  count = var.set_cloudflare_dns == true ? 1 : 0
 
   zone_id = data.cloudflare_zones.zone[0].id
   name    = "${var.dns_name_prefix}-${var.deployset_tag}"
