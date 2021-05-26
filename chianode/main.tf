@@ -116,7 +116,7 @@ data "cloudflare_zones" "zone" {
 resource "cloudflare_record" "loadbalancers" {
   count = var.set_cloudflare_dns ? 0 : 1
 
-  zone_id = data.cloudflare_zones.zone.id
+  zone_id = data.cloudflare_zones.zone[0].id
   name    = "${var.dns_name_prefix}-${var.deployset_tag}"
   value   = aws_lb.chianode.dns_name
   type    = "CNAME"
