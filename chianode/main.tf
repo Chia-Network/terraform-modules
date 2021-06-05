@@ -27,10 +27,11 @@ resource "aws_instance" "chianode" {
   ebs_optimized          = var.ebs_optimized
 
   tags = merge(tomap({
-    "Name"        = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.deployset_tag}-${count.index + 1}",
+    "Name"        = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}-${count.index + 1}",
     "application" = var.application_tag,
     "component"   = var.component_tag,
     "network"     = var.network_tag,
+    "ref"         = var.ref_tag,
     "deployset"   = var.deployset_tag,
   }), var.extra_tags)
 
@@ -63,6 +64,7 @@ resource "aws_lb" "chianode" {
     "application" = var.application_tag,
     "component"   = var.component_tag,
     "network"     = var.network_tag,
+    "ref"         = var.ref_tag,
     "deployset"   = var.deployset_tag
   }), var.extra_tags)
 }
@@ -80,6 +82,7 @@ resource "aws_lb_target_group" "chianode" {
     "application" = var.application_tag,
     "component"   = var.component_tag,
     "network"     = var.network_tag,
+    "ref"         = var.ref_tag,
     "deployset"   = var.deployset_tag
   }), var.extra_tags)
 }

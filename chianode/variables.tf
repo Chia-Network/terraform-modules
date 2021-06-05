@@ -61,6 +61,12 @@ variable "network_tag" {
   type        = string
 }
 
+variable "ref_tag" {
+  description = "The git ref that is deployed to this node"
+  type        = string
+  default     = ""
+}
+
 variable "deployset_tag" {
   description = "If set, this will be added to name/tags and indicates which set this is part of. Useful for things like nodes, where multiple sets of many nodes are deployed with separate LBs"
   type        = string
