@@ -53,7 +53,7 @@ resource "aws_instance" "chianode" {
 resource "aws_lb" "chianode" {
   count = var.lb_enabled == true ? 1 : 0
 
-  name               = "${var.component_tag}-${var.network_tag}-${var.deployset_tag}"
+  name               = "${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}"
   internal           = false
   load_balancer_type = "network"
   subnets            = data.aws_subnet_ids.subnets.ids
@@ -72,13 +72,13 @@ resource "aws_lb" "chianode" {
 resource "aws_lb_target_group" "chianode" {
   count = var.lb_enabled == true ? 1 : 0
 
-  name     = "${var.component_tag}-${var.network_tag}-${var.deployset_tag}"
+  name     = "${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}"
   port     = var.lb_port
   protocol = var.lb_protocol
   vpc_id   = var.vpc_id
 
   tags = merge(tomap({
-    "Name"        = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.deployset_tag}",
+    "Name"        = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}",
     "application" = var.application_tag,
     "component"   = var.component_tag,
     "network"     = var.network_tag,
