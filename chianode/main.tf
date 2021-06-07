@@ -53,7 +53,8 @@ resource "aws_instance" "chianode" {
 resource "aws_lb" "chianode" {
   count = var.lb_enabled == true ? 1 : 0
 
-  name               = replace("${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}", ".", "-")
+  # Max 32 chars on this name. Name "tag" will still have full value
+  name               = substr(replace("${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}", ".", "-"), 0, 32)
   internal           = false
   load_balancer_type = "network"
   subnets            = data.aws_subnet_ids.subnets.ids
@@ -72,7 +73,8 @@ resource "aws_lb" "chianode" {
 resource "aws_lb_target_group" "chianode" {
   count = var.lb_enabled == true ? 1 : 0
 
-  name     = replace("${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}", ".", "-")
+  # Max 32 chars on this name. Name "tag" will still have full value
+  name     = substr(replace("${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.deployset_tag}", ".", "-"), 0, 32)
   port     = var.lb_port
   protocol = var.lb_protocol
   vpc_id   = var.vpc_id
