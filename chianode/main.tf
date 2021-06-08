@@ -111,7 +111,7 @@ resource "aws_lb_target_group_attachment" "chianode" {
 }
 
 data "cloudflare_zones" "zone" {
-  count = var.set_cloudflare_dns == true ? 1 : 0
+  count = var.set_cloudflare_dns == true || var.set_cloudflare_node_dns == true ? 1 : 0
 
   filter {
     name = var.cloudflare_zone
