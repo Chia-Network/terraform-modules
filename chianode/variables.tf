@@ -109,6 +109,12 @@ variable "set_cloudflare_dns" {
   default = false
 }
 
+variable "set_cloudflare_node_dns" {
+  type        = bool
+  description = "Sets a dns entry for the first node that was deployed. Mostly useful for testnet introducers"
+  default     = false
+}
+
 variable "cloudflare_zone" {
   description = "Name of the zone to add the records to in cloudflare"
   type        = string

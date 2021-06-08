@@ -119,11 +119,21 @@ data "cloudflare_zones" "zone" {
 }
 
 resource "cloudflare_record" "loadbalancers" {
-  count = var.set_cloudflare_dns == true ? 1 : 0
+  count = var.set_cloudflare_dns == true && var.lb_enabled == true ? 1 : 0
 
   zone_id = data.cloudflare_zones.zone[0].zones[0].id
   name    = "${var.dns_name_prefix}-${var.deployset_tag}"
   value   = aws_lb.chianode[0].dns_name
+  type    = "CNAME"
+  ttl     = var.dns_ttl
+}
+
+resource "cloudflare_record" "first_node" {
+  count = var.set_cloudflare_node_dns == true ? 1 : 0
+
+  zone_id = data.cloudflare_zones.zone[0].zones[0].id
+  name    = "${var.dns_name_prefix}-${count.index}"
+  value   = aws_instance.chianode[0].public_dns
   type    = "CNAME"
   ttl     = var.dns_ttl
 }
