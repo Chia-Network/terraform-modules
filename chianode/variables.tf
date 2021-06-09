@@ -67,6 +67,14 @@ variable "ref_tag" {
   default     = ""
 }
 
+# LB ref tag is specified separate from the other ref so that for the main network, we can specify separately from
+# the actual ref so we aren't constantly destroying/recreating load balancers
+variable "lb_ref_tag" {
+  description = "The ref tag to use in the `name` of load balancer resources"
+  type        = string
+  default     = ""
+}
+
 variable "deployset_tag" {
   description = "If set, this will be added to name/tags and indicates which set this is part of. Useful for things like nodes, where multiple sets of many nodes are deployed with separate LBs"
   type        = string
