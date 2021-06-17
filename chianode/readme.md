@@ -1,6 +1,6 @@
 # Chia Node
 
-This module is intended to deploy a generic Chia-Blockchain installation and should support running most, if not all, of the services we migth want to run (node, introducer, farmer, etc). By default, also deploys a load balance, but this can be disabled for standalone nodes.
+This module is intended to deploy a generic Chia-Blockchain installation and should support running most, if not all, of the services we might want to run (node, introducer, farmer, etc). By default, also deploys a load balancer, but this can be disabled for standalone nodes.
 
 ## Required Vars
 
@@ -10,3 +10,7 @@ This module is intended to deploy a generic Chia-Blockchain installation and sho
 - `application_tag` - The application - chia-blockchain, faucet, etc
 - `component_tag` - The component of the application - dns-introducer, fullnode, farmer, etc
 - `network_tag` - Network - mainnet, testnet, etc
+
+## Provisioning
+
+Once the node is up, provisioning is done with Ansible. Ansible roles are available in the [ansible-roles repo](https://github.com/Chia-Network/ansible-roles)
