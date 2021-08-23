@@ -1,3 +1,5 @@
+data "aws_region" "current" {}
+
 data "aws_vpc" "vpc" {
   id = var.vpc_id
 }
@@ -47,6 +49,24 @@ resource "aws_instance" "chianode" {
     create = "30m"
     update = "30m"
     delete = "180m"
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "instance_reboot_on_failure" {
+  for_each = toset(aws_instance.chianode.*.id)
+
+  alarm_name          = "StatusCheck: ${each.value}"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "StatusCheckFailed"
+  namespace           = "AWS/EC2"
+  period              = "300"
+  statistic           = "Maximum"
+  threshold           = "1.0"
+  alarm_description   = "EC2 Status Check"
+  alarm_actions       = ["arn:aws:automate:${data.aws_region.current.id}:ec2:reboot"]
+  dimensions          = {
+    InstanceId = each.value
   }
 }
 
