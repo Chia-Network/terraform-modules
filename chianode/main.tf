@@ -53,9 +53,9 @@ resource "aws_instance" "chianode" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "instance_reboot_on_failure" {
-  for_each = toset(aws_instance.chianode.*.id)
+  count = var.instance_count
 
-  alarm_name          = "StatusCheck: ${each.value}"
+  alarm_name          = "StatusCheck: ${aws_instance.chianode[count.index].id}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "StatusCheckFailed"
@@ -66,7 +66,7 @@ resource "aws_cloudwatch_metric_alarm" "instance_reboot_on_failure" {
   alarm_description   = "EC2 Status Check"
   alarm_actions       = ["arn:aws:automate:${data.aws_region.current.id}:ec2:reboot"]
   dimensions          = {
-    InstanceId = each.value
+    InstanceId = aws_instance.chianode[count.index].id
   }
 }
 
