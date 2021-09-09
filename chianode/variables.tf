@@ -67,6 +67,12 @@ variable "ref_tag" {
   default     = ""
 }
 
+variable "group_tag" {
+  description = "The group tag can be used when more context to the resource needs to be added to distinguish between nodes that otherwise have identical application, network, component, and ref tags."
+  type        = string
+  default     = "default"
+}
+
 # LB ref tag is specified separate from the other ref so that for the main network, we can specify separately from
 # the actual ref so we aren't constantly destroying/recreating load balancers
 variable "lb_ref_tag" {
