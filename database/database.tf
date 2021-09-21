@@ -20,8 +20,8 @@ resource "aws_db_instance" "db" {
   snapshot_identifier       = var.snapshot_id
   #skip_final_snapshot      = var.skip_final_snapshot
   tags = {
-  Name = var.db_name
-  application = var.application_tag
+    Name = var.db_name
+    application = var.application_tag
   }
 
   lifecycle {

@@ -72,9 +72,9 @@ variable "additional_security_groups" {
 }
 
 variable "iam_instance_profile" {
-   description = "IAM Instance Profile to use for Resource"
-   type        = string
-   default     = ""
+  description = "IAM Instance Profile to use for Resource"
+  type        = string
+  default     = ""
 }
 
 variable "application_tag" {

@@ -28,6 +28,10 @@ resource "aws_instance" "chianode" {
   iam_instance_profile   = var.iam_instance_profile
   ebs_optimized          = var.ebs_optimized
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   tags = merge(tomap({
     "Name"        = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.group_tag}-${var.deployset_tag}-${count.index + 1}",
     "application" = var.application_tag,

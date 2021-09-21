@@ -44,3 +44,5 @@ terraform.rc]
 
 #ansible
 *vars.yml*
+
+super-linter.log
