@@ -1,17 +1,17 @@
 variable "ref" {
-default = ""
+  default = ""
 }
 
 variable "k_size" {
-default = "27"
+  default = "27"
 }
 
 variable "instance_count" {
-default = "1"
+  default = "1"
 }
 
 variable "volume_size" {
-default = "10"
+  default = "10"
 }
 
 variable "ec2_user" {
@@ -59,9 +59,9 @@ variable "admin_sg" {
 }
 
 variable "iam_instance_profile" {
-   description = "IAM Instance Profile to use for Resource"
-   type        = string
-   default     = ""
+  description = "IAM Instance Profile to use for Resource"
+  type        = string
+  default     = ""
 }
 
 variable "application_tag" {

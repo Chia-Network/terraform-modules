@@ -1,0 +1,23 @@
+# terrascan configuration file https://github.com/accurics/terrascan/blob/master/config/terrascan.toml
+# Rules are found in this repo https://github.com/accurics/terrascan/tree/master/pkg/policies/opa/rego/aws/aws_instance
+
+# scan and skip rules configuration
+[rules]
+# scan rules (list of rules to scan, adding rules here will override rules in the policy path)
+# scan-rules = [
+#     "AWS.S3Bucket.DS.High.1043",
+#     "AWS.S3Bucket.IAM.High.0370"
+# ]
+
+# skip rules (list of rules to skip)
+skip-rules = [
+    "AC_AWS_0480",
+    "AC_AWS_0153", # @TODO This can be reenabled once wallet backup service is moved (default VPC)
+    "AC_AWS_0228", # Port 80
+    "AC_AWS_0229", # Port 443
+    "AC_AWS_0276", # Unknown Prts
+    "AC_AWS_0470", # ELB Access Logging
+    "AC_AWS_0454", # RDS Logging
+    "AC_AWS_0058",
+    "AC_AWS_0053"
+]

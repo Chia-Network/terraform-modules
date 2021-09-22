@@ -14,6 +14,10 @@ resource "aws_instance" "faucet-node" {
   tags                   = merge(tomap({"Name" = "ChiaFaucetNode${count.index + 1}-${var.instance_name_tag}", "application" = var.application_tag, "chia_ref" = var.chia_ref}), var.extra_tags)
   ebs_optimized          = true
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo rm -rf /home/ubuntu/.chia && sudo mkdir /home/ubuntu/.chia && sudo chown -R ubuntu:ubuntu /home/ubuntu/.chia",

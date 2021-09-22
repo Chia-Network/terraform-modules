@@ -13,9 +13,13 @@ resource "aws_instance" "PlotterRunner" {
   subnet_id              = var.subnet_id
   key_name               = var.key_name
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   tags = {
-  Name                   = "${ var.runner_name }-${count.index + 1}"
-  application            = var.application_tag
+    Name                   = "${ var.runner_name }-${count.index + 1}"
+    application            = var.application_tag
   }
 
   provisioner "remote-exec" {

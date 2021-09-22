@@ -13,6 +13,10 @@ resource "aws_instance" "spend-bot" {
   key_name               = var.key_name
   tags                   = merge(map("Name", "ChiaSpendBot${count.index + 1}-${var.instance_name_tag}", "application", "${var.application_tag}", "ref", "${var.ref}",), var.extra_tags)
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   provisioner "file" {
     source      = "./report.sh"
     destination = "/home/ubuntu/report.sh"

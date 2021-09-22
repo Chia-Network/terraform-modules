@@ -12,9 +12,13 @@ resource "aws_instance" "plotter" {
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   tags = {
-  Name = "ChiaPlotter-${var.instance_name_tag}-${count.index + 1}"
-  application = var.application_tag
+    Name = "ChiaPlotter-${var.instance_name_tag}-${count.index + 1}"
+    application = var.application_tag
   }
 
   provisioner "remote-exec" {
