@@ -29,7 +29,8 @@ resource "aws_instance" "chianode" {
   ebs_optimized          = var.ebs_optimized
 
   metadata_options {
-    http_tokens = "required"
+    http_endpoint = "enabled"
+    http_tokens   = "required"
   }
 
   tags = merge(tomap({

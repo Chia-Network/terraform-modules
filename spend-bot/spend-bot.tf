@@ -14,7 +14,8 @@ resource "aws_instance" "spend-bot" {
   tags                   = merge(map("Name", "ChiaSpendBot${count.index + 1}-${var.instance_name_tag}", "application", "${var.application_tag}", "ref", "${var.ref}",), var.extra_tags)
 
   metadata_options {
-    http_tokens = "required"
+    http_endpoint = "enabled"
+    http_tokens   = "required"
   }
 
   provisioner "file" {

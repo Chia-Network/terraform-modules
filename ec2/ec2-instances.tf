@@ -12,7 +12,8 @@ resource "aws_instance" "ec2" {
   key_name               = var.key_name
 
   metadata_options {
-    http_tokens = "required"
+    http_endpoint = "enabled"
+    http_tokens   = "required"
   }
 
   tags = {
