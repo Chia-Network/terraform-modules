@@ -93,6 +93,14 @@ variable "extra_tags" {
   default     = {}
 }
 
+variable "volume_type" {
+  default = "gp3"
+}
+
+variable "volume_iops" {
+  default = "3000"
+}
+
 variable "volume_size" {
   default = "100"
 }

@@ -44,6 +44,8 @@ resource "aws_instance" "chianode" {
   }), var.extra_tags)
 
   root_block_device {
+    volume_type = var.volume_type
+    iops = var.volume_iops
     volume_size = var.volume_size
   }
 
