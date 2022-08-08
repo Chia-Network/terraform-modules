@@ -27,6 +27,7 @@ resource "aws_instance" "chianode" {
   key_name               = var.key_name
   iam_instance_profile   = var.iam_instance_profile
   ebs_optimized          = var.ebs_optimized
+  user_data              = var.user_data
 
   metadata_options {
     http_endpoint = "enabled"
