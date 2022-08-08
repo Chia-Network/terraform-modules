@@ -11,7 +11,7 @@ resource "aws_instance" "spend-bot" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [ var.main_sg,var.admin_sg ]
   key_name               = var.key_name
-  tags                   = merge(map("Name", "ChiaSpendBot${count.index + 1}-${var.instance_name_tag}", "application", "${var.application_tag}", "ref", "${var.ref}",), var.extra_tags)
+  tags                   = merge(map("Name", "ChiaSpendBot${count.index + 1}-${var.instance_name_tag}", "application", var.application_tag, "ref", var.ref,), var.extra_tags)
 
   metadata_options {
     http_endpoint = "enabled"
