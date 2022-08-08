@@ -46,6 +46,12 @@ variable "ebs_optimized" {
   default = null
 }
 
+variable "user_data" {
+  type    = string
+  default = ""
+  description = "user data to pass to the node on startup"
+}
+
 variable "application_tag" {
   description = "The application. chia-blockchain, faucet, etc"
   type        = string
