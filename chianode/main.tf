@@ -16,6 +16,11 @@ data "aws_ami" "ami" {
     name   = "name"
     values = [var.ami_pattern]
   }
+
+  filter {
+    name   = "architecture"
+    values = [var.ami_arch]
+  }
 }
 
 resource "aws_instance" "chianode" {

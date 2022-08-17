@@ -9,6 +9,12 @@ variable "ami_pattern" {
   default     = "Chia_Ubuntu_Base*"
 }
 
+variable "ami_arch" {
+  type = string
+  description = "AMI Architecture"
+  default = "x86_64"
+}
+
 variable "instance_count" {
   default = "1"
 }
