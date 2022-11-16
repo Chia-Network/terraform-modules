@@ -27,3 +27,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_NATURAL_LANGUAGE: false # Complains about the usage of node (chia node) instead of node.js
           VALIDATE_TERRAFORM_TFLINT: false
+          VALIDATE_TERRAFORM_TERRASCAN: false
