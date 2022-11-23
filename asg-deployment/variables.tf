@@ -119,6 +119,12 @@ variable "spot_allocation_strategy" {
   default     = "price-capacity-optimized"
 }
 
+variable "spot_instance_pools" {
+  description = "Number of spot instance pools. Only valid when spot_allocation_strategy is lowest-price"
+  type        = number
+  default     = 0
+}
+
 // PORTS
 
 variable "lb_traffic_port" {
