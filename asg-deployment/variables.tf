@@ -97,9 +97,9 @@ variable "on_demand_percentage_above_base_capacity" {
 }
 
 variable "spot_max_price" {
-  type        = number
-  description = "max price to pay for spot instances"
-  default     = 0
+  type        = string
+  description = "max price to pay for spot instances. Default is empty string, which means use the on demand price"
+  default     = ""
 }
 
 variable "instance_type" {
