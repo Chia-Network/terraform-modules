@@ -113,6 +113,12 @@ variable "instance_type" {
   default     = "c5.large"
 }
 
+variable "spot_allocation_strategy" {
+  description = "Spot allocation strategy"
+  type        = string
+  default     = "price-capacity-optimized"
+}
+
 // PORTS
 
 variable "lb_traffic_port" {
