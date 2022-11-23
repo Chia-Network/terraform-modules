@@ -125,7 +125,7 @@ resource "aws_autoscaling_group" "asg" {
       on_demand_percentage_above_base_capacity = var.on_demand_percentage_above_base_capacity
       spot_allocation_strategy                 = var.spot_allocation_strategy
       // The Spot Instances come from the pools with optimal capacity for the number of instances that are launching. You can optionally set a priority for each instance type.
-      spot_instance_pools                      = 4
+      spot_instance_pools                      = var.spot_allocation_strategy == "lowest-price" ? var.spot_instance_pools : 0
       spot_max_price                           = var.spot_max_price
     }
 
