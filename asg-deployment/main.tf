@@ -1,4 +1,6 @@
 provider "aws" {
+  region = var.region
+
   default_tags {
     tags = {
       "Name"        = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.group_tag}"

@@ -1,3 +1,8 @@
+variable "region" {
+  description = "AWS Region"
+  type        = string
+}
+
 variable "vpc_name_filter" {
   description = "Name patter to filter VPC on"
   type        = string
