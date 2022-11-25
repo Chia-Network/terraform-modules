@@ -27,6 +27,12 @@ variable "ami_pattern" {
   default     = "Chia_Ubuntu_Base*"
 }
 
+variable "ami_arch" {
+  description = "Arch to match for AMI"
+  type        = string
+  default     = "x86_64"
+}
+
 variable "instance_count" {
   description = "Number of instances in the auto scaling group"
   type        = number
