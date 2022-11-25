@@ -49,7 +49,7 @@ data "aws_ami" "asg" {
 
   filter {
     name   = "architecture"
-    values = ["x86_64"]
+    values = [var.ami_arch]
   }
 }
 
