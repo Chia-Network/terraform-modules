@@ -64,9 +64,13 @@ data "aws_subnets" "asg" {
   }
 }
 
+locals {
+  lb_suffix = var.group_tag != "default" ? var.group_tag : ""
+}
+
 resource "aws_lb" "asg" {
   // 32 Character max length, so substr to make sure this is always the case
-  name               = substr("${var.component_tag}-${var.network_tag}", 0, 32)
+  name               = substr("${var.component_tag}-${var.network_tag}${local.lb_suffix}", 0, 32)
   internal           = false
   load_balancer_type = "network"
   subnets            = data.aws_subnets.asg.ids
