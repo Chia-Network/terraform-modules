@@ -73,6 +73,7 @@ resource "aws_lb" "asg" {
   name               = substr("${var.component_tag}-${var.network_tag}${local.lb_suffix}", 0, 32)
   internal           = false
   load_balancer_type = "network"
+  ip_address_type    = var.lb_ip_address_type
   subnets            = data.aws_subnets.asg.ids
 }
 

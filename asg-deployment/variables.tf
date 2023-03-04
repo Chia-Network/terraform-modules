@@ -145,6 +145,12 @@ variable "lb_protocol" {
   default     = "TCP"
 }
 
+variable "lb_ip_address_type" {
+  description = "The type of IP addresses used by the subnets for the load balancer"
+  type        = string
+  default     = "ipv4" # Can also be dualstack
+}
+
 variable "lb_health_check_port" {
   description = "Port for checking health of the targets"
   type        = number
