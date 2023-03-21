@@ -104,7 +104,7 @@ resource "aws_lb_target_group" "asg" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name                      = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.group_tag}"
+  name                      = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.group_tag}"
   desired_capacity          = var.instance_count
   max_size                  = var.instance_count
   min_size                  = var.instance_count
@@ -153,7 +153,7 @@ resource "aws_autoscaling_group" "asg" {
 }
 
 resource "aws_launch_template" "asg" {
-  name                   = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.ref_tag}-${var.group_tag}"
+  name                   = "${var.application_tag}-${var.component_tag}-${var.network_tag}-${var.group_tag}"
   image_id               = data.aws_ami.asg.id
   vpc_security_group_ids = data.aws_security_groups.asg.ids
   instance_type          = var.instance_type
