@@ -88,7 +88,7 @@ resource "aws_cloudwatch_metric_alarm" "instance_reboot_on_failure" {
 resource "aws_lb" "chianode" {
   count = var.lb_enabled == true ? 1 : 0
 
-  internal           = false
+  internal           = var.private_networking
   load_balancer_type = "network"
   subnets            = data.aws_subnet_ids.subnets.ids
   ip_address_type    = var.lb_ipv6 == true ? "dualstack" : "ipv4"
@@ -166,7 +166,7 @@ resource "cloudflare_record" "first_node" {
 
   zone_id = data.cloudflare_zones.zone[0].zones[0].id
   name    = "${var.dns_name_prefix}-${count.index}"
-  value   = aws_instance.chianode[0].public_ip
+  value   = private_networking ? aws_instance.chianode[0].private_ip : aws_instance.chianode[0].public_ip
   type    = "A"
   ttl     = var.dns_ttl
 }

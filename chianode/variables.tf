@@ -165,3 +165,9 @@ variable "dns_name_prefix" {
   type        = string
   default     = ""
 }
+
+variable "private_networking" {
+  description = "Whether this deployment should be restricted to the private network or not. This primarily impacts DNS entries that are created."
+  type        = bool
+  default     = false
+}
