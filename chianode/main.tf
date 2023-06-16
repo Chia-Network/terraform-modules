@@ -166,7 +166,7 @@ resource "cloudflare_record" "first_node" {
 
   zone_id = data.cloudflare_zones.zone[0].zones[0].id
   name    = "${var.dns_name_prefix}-${count.index}"
-  value   = private_networking ? aws_instance.chianode[0].private_ip : aws_instance.chianode[0].public_ip
+  value   = var.private_networking ? aws_instance.chianode[0].private_ip : aws_instance.chianode[0].public_ip
   type    = "A"
   ttl     = var.dns_ttl
 }
