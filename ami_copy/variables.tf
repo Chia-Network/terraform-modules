@@ -12,3 +12,8 @@ variable "source_ami_region"{
   description = "this will almost always be us-west-2"
   type        = string
 }
+
+variable "tags"{
+  description = "Map of tags to use for the output AMI"
+  type        = map
+}
