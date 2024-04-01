@@ -14,3 +14,15 @@ variable "mainnet_fullnode_port" {
   description = "Chia Full Node port"
   default     = "8444"
 }
+
+variable "key_name" {
+  type        = string
+  description = "Name for AWS Key Pair to use with EC2 instance"
+  default     = "no-access-keypair"
+}
+
+variable "public_key" {
+  type        = string
+  description = "Public key to use with the key_name for SSH access to EC2 instance"
+  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhTYTuiMjbGo+v6VWzFtBW2vyzZWs1AXpfZKoqLd3ut"
+}

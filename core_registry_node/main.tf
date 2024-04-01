@@ -22,7 +22,7 @@ resource "aws_instance" "core-registry" {
   vpc_security_group_ids = var.secgroups
   key_name               = var.key_name
   user_data              = var.user_data
-  iam_instance_profile   = "backup-bucket"
+  iam_instance_profile   = var.instance_profile
 
   root_block_device {
     volume_type = "gp3"

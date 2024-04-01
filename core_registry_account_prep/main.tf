@@ -78,9 +78,8 @@ resource "aws_security_group" "mainnet-full-node" {
   }
 }
 
-# Create an SSH key for EC2 instances. We do not have the private
-# key for this public key and will never use it.
-resource "aws_key_pair" "no-access-keypair" {
-  key_name = "no-access-keypair"
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhTYTuiMjbGo+v6VWzFtBW2vyzZWs1AXpfZKoqLd3ut"
+# Create an SSH key for EC2 instances.
+resource "aws_key_pair" "core-registry-keypair" {
+  key_name = var.key_name
+  public_key = var.public_key
 }

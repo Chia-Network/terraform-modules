@@ -54,6 +54,12 @@ variable "volume_size" {
   default     = "300"
 }
 
+variable "instance_profile" {
+  type        = string
+  description = "IAM instance profile to assign to the EC2. Useful for giving permission to S3 bucket or other AWS resources"
+  default     = ""
+}
+
 variable "cf_zone" {
   type        = string
   description = "Cloudflare zone where we will create the A record for this instance"
