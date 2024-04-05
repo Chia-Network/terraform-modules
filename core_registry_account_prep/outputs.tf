@@ -13,7 +13,7 @@ output "sg_allow_outbound_id" {
     description = "Allow all outbound connections security group"
 }
 
-output "key_pair_no_access" {
-    value   = aws_key_pair.no-access-keypair.key_name
+output "core_registry_key_pair" {
+    value   = aws_key_pair.core-registry-keypair.key_name
     description = "Key pair with no access"
 }
