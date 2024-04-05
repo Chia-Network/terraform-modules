@@ -26,7 +26,7 @@ resource "aws_instance" "core-registry" {
 
   root_block_device {
     volume_type = "gp3"
-    volume_size = "var.volume_size"
+    volume_size = var.volume_size
   }
 
   tags = {
