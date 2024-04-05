@@ -66,13 +66,13 @@ variable "cf_zone" {
 }
 
 variable "cf_app_proxied" {
-  type        = "bool"
+  type        = bool
   description = "Proxy through Cloudflare, true or false"
   default     = "true"
 }
 
 variable "cf_datalayer_proxied" {
-  type        = "bool"
+  type        = bool
   description = "Proxy through Cloudflare, true or false"
   default     = "true"
 }
