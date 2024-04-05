@@ -26,7 +26,7 @@ variable "node_subnet" {
 }
 
 variable "chia_node_port" {
-  type        = string
+  type        = number
   description = "Chia Full Node port"
   default     = "8444"
 }
@@ -49,7 +49,7 @@ variable "node_instance_type" {
 }
 
 variable "volume_size" {
-  type        = string
+  type        = number
   description = "Root volume size for EC2"
   default     = "300"
 }
