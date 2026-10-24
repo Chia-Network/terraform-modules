@@ -1,0 +1,34 @@
+# This file is managed by the repo-content-updater project. Manual changes here will result in a PR to bring back
+# inline with the upstream template, unless you add !dependabot to the repo's managed-files property
+# repo-content-updater:dependabot
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directories: ["/", "/.github/actions/*"]
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 10
+    rebase-strategy: auto
+    labels:
+      - dependencies
+      - github_actions
+      - "Changed"
+    reviewers: ["cameroncooper", "emlowe"]
+  - package-ecosystem: terraform
+    directories: ["/ami_copy", "/asg-deployment", "/aws-secret-manager", "/aws_resource_groups", "/bootstrap-runner", "/chianode", "/core_registry_account_prep", "/core_registry_node", "/database", "/dns/cloudflare_dns", "/dns/route53_dns", "/ec2", "/elb", "/faucet", "/plotter", "/plotter-runner", "/security_groups/backup_db_sg", "/security_groups/backup_sg", "/security_groups/bootstrap_sg", "/spend-bot", "/ssl/acme", "/ssl/aws_cert_manager", "/ssl/aws_iam_cert", "/ssl/cert-copy"]
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 10
+    rebase-strategy: auto
+    labels:
+      - dependencies
+      - terraform
+      - "Changed"
+    reviewers: ["cameroncooper", "emlowe"]
